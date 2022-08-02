@@ -27,8 +27,13 @@ header {
 
 .nearUser {
     width: 50%;
+    height: 400px;
     margin-right: 10px;
     border: 4px solid black;
+}
+
+.prevBtn {
+    margin-bottom: 10px;
 }
 
 .otherBox {
@@ -37,9 +42,10 @@ header {
 }
 
 .prevS {
-    height: 20%;
+    height: 200px;
     margin-bottom: 5%;
     border: 4px solid black;
+    overflow: scroll;
 }
 
 .popV {
