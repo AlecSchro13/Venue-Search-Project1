@@ -7,18 +7,12 @@ const genreSelectEl = document.querySelector("#genreOptions")
 const venueUpcomingEvents = document.querySelector(".upcomingevents")
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
+var localS = [];
 
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-searchForm.addEventListener("submit", submitFormHandler);
-=======
-=======
-
->>>>>>> fb655d8e9917dcd8cf3aa6a09b36e20b37564a60
 searchForm.addEventListener("submit", submitFormHandler)
 genreForm.addEventListener("submit", genreFormHandler)
 
@@ -33,11 +27,6 @@ function genreFormHandler (e) {
     venueUpcomingEvents.innerHTML = "";
   }
 }
-<<<<<<< HEAD
->>>>>>> b8414db195beffe23648be1aafebe7d2a66fa41d
-=======
-
->>>>>>> fb655d8e9917dcd8cf3aa6a09b36e20b37564a60
 
 function submitFormHandler (e) {
 
@@ -193,13 +182,34 @@ startPageEvents();
 function saveToLocalStorage(venueName) {
   console.log(`Parker ${venueName}`);
   localStorage.setItem("VenueName", venueName);
+  console.log(localS);
   displayPreviousSearchedButtons();
 };
 
 function displayPreviousSearchedButtons() {
   var prevButton = document.createElement("button");
   var previous = localStorage.getItem("VenueName");
-  prevButton.textContent = previous;
-  prevButton.classList.add("prevBtn");
-  prevS.append(prevButton);
+  localS.push(previous)
+
+  localStorage.setItem("Venue Names", localS);
+  var venuesIds = localStorage.getItem("Venue Names");
+
+  // console.log(VenueN);
+
+  // prevButton.textContent = previous;
+  // prevButton.classList.add("prevBtn");
+  // prevS.append(prevButton);
+
+  console.log("Coming up");
+  console.log(previous);
+  console.log(localS);
+
+  for (i = 0; i < localS.length; i++){
+    prevButton.textContent = localS[i];
+    prevButton.classList.add("prevBtn");
+    prevS.append(prevButton);
+  }
+
 }
+
+displayPreviousSearchedButtons();
