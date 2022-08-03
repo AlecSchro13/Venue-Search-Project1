@@ -5,6 +5,9 @@ const genreForm = document.querySelector(".form2")
 const venueInputEl = document.querySelector(".venueInput");
 const genreSelectEl = document.querySelector("#genreOptions")
 const venueUpcomingEvents = document.querySelector(".upcomingevents")
+
+//popular venue button DOM
+const popularbutton = document.querySelector(".popBtns")
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
 
@@ -12,13 +15,13 @@ var prevS = document.querySelector(".prevS");
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-searchForm.addEventListener("submit", submitFormHandler);
-=======
-=======
+popularbutton.addEventListener("click", (event) => {
+  event.preventDefault();
+  let userClick = event.target.getAttribute('data-venue');
+  console.log(userClick);
+  searchVenue(userClick);
+});
 
->>>>>>> fb655d8e9917dcd8cf3aa6a09b36e20b37564a60
 searchForm.addEventListener("submit", submitFormHandler)
 genreForm.addEventListener("submit", genreFormHandler)
 
@@ -33,11 +36,7 @@ function genreFormHandler (e) {
     venueUpcomingEvents.innerHTML = "";
   }
 }
-<<<<<<< HEAD
->>>>>>> b8414db195beffe23648be1aafebe7d2a66fa41d
-=======
 
->>>>>>> fb655d8e9917dcd8cf3aa6a09b36e20b37564a60
 
 function submitFormHandler (e) {
 
