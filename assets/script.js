@@ -5,10 +5,20 @@ const genreForm = document.querySelector(".form2");
 const venueInputEl = document.querySelector(".venueInput");
 const genreSelectEl = document.querySelector("#genreOptions");
 const venueUpcomingEvents = document.querySelector(".upcomingevents");
+
+//popular venue button DOM
+const popularbutton = document.querySelector(".popBtns");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
+
+popularbutton.addEventListener("click", (event) => {
+  event.preventDefault();
+  let userClick = event.target.getAttribute("data-venue");
+  console.log(userClick);
+  searchVenue(userClick);
+});
 
 searchForm.addEventListener("submit", submitFormHandler);
 genreForm.addEventListener("submit", genreFormHandler);
