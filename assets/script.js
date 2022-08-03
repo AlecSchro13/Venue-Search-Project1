@@ -6,9 +6,11 @@ const venueInputEl = document.querySelector(".venueInput");
 const genreSelectEl = document.querySelector("#genreOptions")
 const venueUpcomingEvents = document.querySelector(".upcomingevents")
 //const statusEl = document.querySelector("#status")
+var prevS = document.querySelector(".prevS");
 
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
+
 
 
 searchForm.addEventListener("submit", submitFormHandler)
@@ -25,6 +27,7 @@ function genreFormHandler (e) {
     venueUpcomingEvents.innerHTML = "";
   }
 }
+
 
 function submitFormHandler (e) {
 
@@ -59,7 +62,7 @@ function searchVenue(userVenue) {
       console.log(venueId);
 
       //this is Calling a NEW function TBD
-      //saveToLocalStorage(venueName);
+      saveToLocalStorage(venueName);
 
       //these variables will be used for google maps... TBD
       const lat = data._embedded.venues[0].location.latitude;
@@ -177,9 +180,16 @@ startPageEvents();
 //TBD........
 //}
 
-//funnction saveToLocalStorage(venueName) {
-//displayPreviousSearchedButtons();
-//};
+function saveToLocalStorage(venueName) {
+  console.log(`Parker ${venueName}`);
+  localStorage.setItem("VenueName", venueName);
+  displayPreviousSearchedButtons();
+};
 
-//function displayPreviousSearchedButtons() {
-//}
+function displayPreviousSearchedButtons() {
+  var prevButton = document.createElement("button");
+  var previous = localStorage.getItem("VenueName");
+  prevButton.textContent = previous;
+  prevButton.classList.add("prevBtn");
+  prevS.append(prevButton);
+}
