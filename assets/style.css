@@ -24,18 +24,11 @@ header {
 }
 
 .nearUser {
-<<<<<<< HEAD
     width: 50%;
     min-height: 440px;
     height: fit-content;
     margin-right: 10px;
     border: 4px solid black;
-=======
-  width: 50%;
-  height: 400px;
-  margin-right: 10px;
-  border: 4px solid black;
->>>>>>> 287150425edc376dcb8ec8abdcfaf963b1a74348
 }
 
 .prevBtn {
@@ -55,14 +48,13 @@ header {
 }
 
 .popV {
-<<<<<<< HEAD
     height: 75%;
     max-height: fit-content;
     border: 4px solid black;
-=======
-  height: 75%;
-  border: 4px solid black;
->>>>>>> 287150425edc376dcb8ec8abdcfaf963b1a74348
+}
+
+.popVenuesBtnBox {
+  display: flex;
 }
 
 .popBtns {

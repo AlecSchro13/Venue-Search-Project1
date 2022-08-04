@@ -8,9 +8,10 @@ const venueUpcomingEvents = document.querySelector(".upcomingevents");
 
 //popular venue button DOM
 const popularbutton = document.querySelector(".popBtns");
-//const statusEl = document.querySelector("#status")
+// const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
 var localS = [];
+var page = 0;
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 
@@ -21,13 +22,8 @@ popularbutton.addEventListener("click", (event) => {
   searchVenue(userClick);
 });
 
-<<<<<<< HEAD
-searchForm.addEventListener("submit", submitFormHandler)
-genreForm.addEventListener("submit", genreFormHandler)
-=======
 searchForm.addEventListener("submit", submitFormHandler);
 genreForm.addEventListener("submit", genreFormHandler);
->>>>>>> 287150425edc376dcb8ec8abdcfaf963b1a74348
 
 function genreFormHandler(e) {
   e.preventDefault();
@@ -41,11 +37,6 @@ function genreFormHandler(e) {
     venueUpcomingEvents.innerHTML = "";
   }
 }
-<<<<<<< HEAD
-
-function submitFormHandler (e) {
-=======
->>>>>>> 287150425edc376dcb8ec8abdcfaf963b1a74348
 
 function submitFormHandler(e) {
   e.preventDefault();
@@ -220,36 +211,47 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
-  console.log(`Parker ${venueName}`);
+  // console.log(`Parker ${venueName}`);
   localStorage.setItem("VenueName", venueName);
-  console.log(localS);
-  displayPreviousSearchedButtons();
+  var previous = localStorage.getItem("VenueName"); 
+  
+  localS.push(previous)
+
+  localStorage.setItem("VenueNames", JSON.stringify(localS));
+  // console.log(localS);
+  displayVenue();
+}
+
+function displayVenue() {
+
+  var venuesId = localStorage.getItem("VenueName");
+  console.log(venuesId);
+  console.log("Neww Array?");
+
+  var prevButton = document.createElement("button");
+    prevButton.textContent = venuesId;
+    prevButton.classList.add("prevBtn");
+    console.log(prevButton);
+    prevS.append(prevButton);
+  
 }
 
 function displayPreviousSearchedButtons() {
-  var prevButton = document.createElement("button");
-  var previous = localStorage.getItem("VenueName");
-  localS.push(previous)
 
-  localStorage.setItem("Venue Names", localS);
-  var venuesIds = localStorage.getItem("Venue Names");
-
-  // console.log(VenueN);
-
-  // prevButton.textContent = previous;
-  // prevButton.classList.add("prevBtn");
-  // prevS.append(prevButton);
-
-  console.log("Coming up");
-  console.log(previous);
-  console.log(localS);
-
-  for (i = 0; i < localS.length; i++){
-    prevButton.textContent = localS[i];
+  
+  var venuesIds = localStorage.getItem("VenueNames");
+  console.log(venuesIds);
+  venuesIds = JSON.parse(venuesIds);
+  console.log(venuesIds);
+  console.log("Neww Array?");
+  
+  for (i = 0; i < venuesIds.length; i++){
+    var prevButton = document.createElement("button");
+    prevButton.textContent = venuesIds[i];
     prevButton.classList.add("prevBtn");
+    console.log(prevButton);
     prevS.append(prevButton);
   }
-
 }
 
 displayPreviousSearchedButtons();
