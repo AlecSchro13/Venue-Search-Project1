@@ -1,12 +1,11 @@
-//THIS CONST would be connected to a class that is in a <Form> tag
 const searchForm = document.querySelector(".form1");
 const genreForm = document.querySelector(".form2");
-//this Const would be connected to a class that is in the <input> tag
+
 const venueInputEl = document.querySelector(".venueInput");
 const genreSelectEl = document.querySelector("#genreOptions");
 const venueUpcomingEvents = document.querySelector(".upcomingevents");
 
-//popular venue button DOM
+
 const popularbutton = document.querySelector(".popBtns");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
@@ -17,7 +16,6 @@ let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 popularbutton.addEventListener("click", (event) => {
   event.preventDefault();
   let userClick = event.target.getAttribute("data-venue");
-  console.log(userClick);
   searchVenue(userClick);
 });
 
@@ -49,7 +47,14 @@ function submitFormHandler(e) {
     searchVenue(userVenue);
   } else {
     //also tbd
-    alert("Please Enter a Venue Name OR choose a Genre");
+    venueUpcomingEvents.innerHTML = "";
+    let emptyValue = document.createElement("h2")
+    emptyValue.textContent = "Please Type in a Venue to get upcoming events..."
+    let example = document.createElement("h4")
+    example.textContent = "or Choose a Genre option to view events on a Genre!😅"
+    let example2 = document.createElement("h4")
+    example2.textContent = "You can also select one of our Popular venues if you're unfamilliar with the area!"
+    venueUpcomingEvents.append(emptyValue, example, example2);
   }
 }
 
@@ -79,8 +84,14 @@ function searchVenue(userVenue) {
 
       upcomingEvents(venueId, venueName);
     })
-    //possibly add a 404.html?
-    .catch((error) => console.log("error", error));
+    .catch(() => {
+      venueUpcomingEvents.innerHTML = "";
+      let error = document.createElement("h2")
+      error.textContent = "oops.. Something went wrong"
+      let example = document.createElement("h4")
+      example.textContent = "Looks like we found an error.. Please try again!😅"
+      venueUpcomingEvents.append(error, example);
+    });
 }
 
 function upcomingEvents(venueId, venueName) {
@@ -97,7 +108,14 @@ function upcomingEvents(venueId, venueName) {
       //this function call is to render upcoming events to screen (and passing venue name over to next function)
       displayUpcomingEvents(futureEventsArray, venueName);
     })
-    .catch((error) => console.log("error", error));
+    .catch(() => {
+      venueUpcomingEvents.innerHTML = "";
+      let noEvents = document.createElement("h2")
+      noEvents.textContent = "No events found for this venue"
+      let example = document.createElement("h4")
+      example.textContent = "try something like Summit or Fillmore Auditorium 😅"
+      venueUpcomingEvents.append(noEvents, example);
+    });
 }
 
 function displayUpcomingEvents(futureEventsArray, venueName) {
@@ -112,6 +130,8 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
   //sort array before going through for loop
 
   for (let index = 0; index < futureEventsArray.length; index++) {
+    const eventId = futureEventsArray[index].id
+    console.log(eventId);
     const eventName = futureEventsArray[index].name;
     //console.log(eventName);
     const eventDate = futureEventsArray[index].dates.start.localDate;
@@ -121,7 +141,7 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
     let listEvent = document.createElement("li");
     listEvent.classList.add("cssListItem");
     let dataLink = document.createElement("a");
-    dataLink.setAttribute("href", "./event.html");
+    dataLink.setAttribute("href", `./event.html?eventId=${eventId}`);
     dataLink.textContent = `${eventName} playing on ${eventDate} /Genre: ${Genre}`;
     listEvent.append(dataLink);
     listappender.append(listEvent);
@@ -151,6 +171,8 @@ function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
 
   //starting Loop here
   for (let index = 0; index < genreEventArray.length; index++) {
+    const eventId = genreEventArray[index].id
+    console.log(eventId);
     const eventName = genreEventArray[index].name;
     console.log(eventName);
     const eventDate = genreEventArray[index].dates.start.localDate;
@@ -159,7 +181,7 @@ function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
     let listEvent = document.createElement("li");
     listEvent.classList.add("cssListItem");
     let dataLink = document.createElement("a");
-    dataLink.setAttribute("href", "./event.html");
+    dataLink.setAttribute("href", `./event.html?eventId=${eventId}`);
     dataLink.textContent = `${eventName} playing on: ${eventDate}`;
     listEvent.append(dataLink);
     listappender.append(listEvent);
@@ -194,10 +216,10 @@ function showStartPageEvents(eventArray) {
   venueUpcomingEvents.append(titleEl, listappender);
   for (let index = 0; index < eventArray.length; index++) {
     const nameEvent = eventArray[index].name;
-    console.log(nameEvent);
-    console.log(eventArray);
+    //console.log(nameEvent);
+    //console.log(eventArray);
     const dateEvent = eventArray[index].dates.start.localDate;
-    console.log(dateEvent);
+    //console.log(dateEvent);
 
     let listEvent = document.createElement("li");
     listEvent.classList.add("cssListItem");
@@ -210,9 +232,9 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
-  console.log(`Parker ${venueName}`);
+  //console.log(`Parker ${venueName}`);
   localStorage.setItem("VenueName", venueName);
-  console.log(localS);
+  //console.log(localS);
   displayPreviousSearchedButtons();
 }
 
@@ -230,9 +252,9 @@ function displayPreviousSearchedButtons() {
   // prevButton.classList.add("prevBtn");
   // prevS.append(prevButton);
 
-  console.log("Coming up");
-  console.log(previous);
-  console.log(localS);
+  //console.log("Coming up");
+  //console.log(previous);
+  //console.log(localS);
 
   for (i = 0; i < localS.length; i++){
     prevButton.textContent = localS[i];
