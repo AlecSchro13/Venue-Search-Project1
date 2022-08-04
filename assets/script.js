@@ -1,48 +1,43 @@
 //THIS CONST would be connected to a class that is in a <Form> tag
 const searchForm = document.querySelector(".form1");
-const genreForm = document.querySelector(".form2")
+const genreForm = document.querySelector(".form2");
 //this Const would be connected to a class that is in the <input> tag
 const venueInputEl = document.querySelector(".venueInput");
-const genreSelectEl = document.querySelector("#genreOptions")
-const venueUpcomingEvents = document.querySelector(".upcomingevents")
+const genreSelectEl = document.querySelector("#genreOptions");
+const venueUpcomingEvents = document.querySelector(".upcomingevents");
+
+//popular venue button DOM
+const popularbutton = document.querySelector(".popBtns");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
-
+var localS = [];
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 
+popularbutton.addEventListener("click", (event) => {
+  event.preventDefault();
+  let userClick = event.target.getAttribute("data-venue");
+  console.log(userClick);
+  searchVenue(userClick);
+});
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 searchForm.addEventListener("submit", submitFormHandler);
-=======
-=======
+genreForm.addEventListener("submit", genreFormHandler);
 
->>>>>>> fb655d8e9917dcd8cf3aa6a09b36e20b37564a60
-
-
-searchForm.addEventListener("submit", submitFormHandler)
-genreForm.addEventListener("submit", genreFormHandler)
-
-function genreFormHandler (e) {
+function genreFormHandler(e) {
   e.preventDefault();
   //selects the option chosen from dropdown menue
-  let genreChoiceValue = genreSelectEl.options[genreSelectEl.selectedIndex].value;
-  console.log (genreChoiceValue);
+  let genreChoiceValue =
+    genreSelectEl.options[genreSelectEl.selectedIndex].value;
+  console.log(genreChoiceValue);
 
   if (genreChoiceValue) {
-    getGenreEvents (genreChoiceValue);
+    getGenreEvents(genreChoiceValue);
     venueUpcomingEvents.innerHTML = "";
   }
 }
-<<<<<<< HEAD
->>>>>>> b8414db195beffe23648be1aafebe7d2a66fa41d
-=======
 
->>>>>>> fb655d8e9917dcd8cf3aa6a09b36e20b37564a60
-
-function submitFormHandler (e) {
-
+function submitFormHandler(e) {
   e.preventDefault();
 
   let userVenue = venueInputEl.value.trim();
@@ -105,82 +100,84 @@ function upcomingEvents(venueId, venueName) {
     .catch((error) => console.log("error", error));
 }
 
-function displayUpcomingEvents (futureEventsArray, venueName) {
+function displayUpcomingEvents(futureEventsArray, venueName) {
   //clearing start page events to begin with on HTML
   venueUpcomingEvents.innerHTML = "";
 
-  let titleEl = document.createElement("h4")
-  titleEl.textContent = `Showing Events for: ${venueName}`
+  let titleEl = document.createElement("h4");
+  titleEl.textContent = `Showing Events for: ${venueName}`;
   //creating <ol> for <li> tags to be appended to
-  let listappender = document.createElement("ol")
+  let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
   //sort array before going through for loop
 
   for (let index = 0; index < futureEventsArray.length; index++) {
     const eventName = futureEventsArray[index].name;
-    //console.log(eventName); 
+    //console.log(eventName);
     const eventDate = futureEventsArray[index].dates.start.localDate;
     //console.log(eventDate);
     const Genre = futureEventsArray[index].classifications[0].genre.name;
     //console.log(Genre);
     let listEvent = document.createElement("li");
-    listEvent.classList.add("cssListItem")
-    let dataLink = document.createElement("a")
-    dataLink.setAttribute("href", "./event.html")
-    dataLink.textContent= `${eventName} playing on ${eventDate} /Genre: ${Genre}`;
+    listEvent.classList.add("cssListItem");
+    let dataLink = document.createElement("a");
+    dataLink.setAttribute("href", "./event.html");
+    dataLink.textContent = `${eventName} playing on ${eventDate} /Genre: ${Genre}`;
     listEvent.append(dataLink);
     listappender.append(listEvent);
   }
-
 }
 
-function getGenreEvents (genreChoiceValue) {
-  fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&stateCode=CO&segmentName=music&classificationName=${genreChoiceValue}&sort=date,asc&apikey=JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3`)
-    .then(response => response.json())
+function getGenreEvents(genreChoiceValue) {
+  fetch(
+    `https://app.ticketmaster.com/discovery/v2/events.json?size=10&stateCode=CO&segmentName=music&classificationName=${genreChoiceValue}&sort=date,asc&apikey=JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3`
+  )
+    .then((response) => response.json())
 
     .then((data) => {
       console.log(data);
       let genreEventArray = data._embedded.events;
       console.log(genreEventArray);
-      displayGenreUpcomingEvents (genreEventArray, genreChoiceValue);
+      displayGenreUpcomingEvents(genreEventArray, genreChoiceValue);
     })
     .catch((error) => console.log("error", error));
 }
 
-function displayGenreUpcomingEvents (genreEventArray, genreChoice) {
-  let titleEl = document.createElement("h4")
+function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
+  let titleEl = document.createElement("h4");
   titleEl.textContent = `Showing Events for: ${genreChoice} Genre`;
-  let listappender = document.createElement("ol")
+  let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
-  
+
   //starting Loop here
   for (let index = 0; index < genreEventArray.length; index++) {
     const eventName = genreEventArray[index].name;
     console.log(eventName);
     const eventDate = genreEventArray[index].dates.start.localDate;
     console.log(eventDate);
-    
+
     let listEvent = document.createElement("li");
-    listEvent.classList.add("cssListItem")
-    let dataLink = document.createElement("a")
-    dataLink.setAttribute("href", "./event.html")
-    dataLink.textContent= `${eventName} playing on: ${eventDate}`;
+    listEvent.classList.add("cssListItem");
+    let dataLink = document.createElement("a");
+    dataLink.setAttribute("href", "./event.html");
+    dataLink.textContent = `${eventName} playing on: ${eventDate}`;
     listEvent.append(dataLink);
     listappender.append(listEvent);
   }
 }
 
-
 //Start function displays events at start page
-function startPageEvents () {
-    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=8&stateCode=CO&segmentName=music&sort=date,asc&apikey=JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3`)
-    .then(response => response.json())
+function startPageEvents() {
+  fetch(
+    `https://app.ticketmaster.com/discovery/v2/events.json?size=15&stateCode=CO&segmentName=music&sort=date,asc&apikey=JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3`
+  )
+    .then((response) => response.json())
 
     .then((data) => {
       console.log(data);
       eventArray = data._embedded.events;
       console.log(eventArray);
-      //showStartPageEvents(eventArray);
+      showStartPageEvents(eventArray);
     })
 
     .catch((error) => console.log("error", error));
@@ -188,20 +185,61 @@ function startPageEvents () {
 
 startPageEvents();
 
-//function showStartPageEvents (eventArray) {
-//TBD........
-//}
+function showStartPageEvents(eventArray) {
+  var userNear = document.querySelector(".nearUser");
+  userNear.textContent = "";
+  let titleEl = document.createElement("h4");
+  titleEl.textContent = `Upcoming Events near Denver, CO`;
+  let listappender = document.createElement("ol");
+  venueUpcomingEvents.append(titleEl, listappender);
+  for (let index = 0; index < eventArray.length; index++) {
+    const nameEvent = eventArray[index].name;
+    console.log(nameEvent);
+    console.log(eventArray);
+    const dateEvent = eventArray[index].dates.start.localDate;
+    console.log(dateEvent);
+
+    let listEvent = document.createElement("li");
+    listEvent.classList.add("cssListItem");
+    let dataLink = document.createElement("a");
+    dataLink.setAttribute("href", "./event.html");
+    dataLink.textContent = `${nameEvent} playing on: ${dateEvent}`;
+    listEvent.append(dataLink);
+    listappender.append(listEvent);
+  }
+}
 
 function saveToLocalStorage(venueName) {
   console.log(`Parker ${venueName}`);
   localStorage.setItem("VenueName", venueName);
+  console.log(localS);
   displayPreviousSearchedButtons();
-};
+}
 
 function displayPreviousSearchedButtons() {
   var prevButton = document.createElement("button");
   var previous = localStorage.getItem("VenueName");
-  prevButton.textContent = previous;
-  prevButton.classList.add("prevBtn");
-  prevS.append(prevButton);
+  localS.push(previous)
+
+  localStorage.setItem("Venue Names", localS);
+  var venuesIds = localStorage.getItem("Venue Names");
+
+  // console.log(VenueN);
+
+  // prevButton.textContent = previous;
+  // prevButton.classList.add("prevBtn");
+  // prevS.append(prevButton);
+
+  console.log("Coming up");
+  console.log(previous);
+  console.log(localS);
+
+  for (i = 0; i < localS.length; i++){
+    prevButton.textContent = localS[i];
+    prevButton.classList.add("prevBtn");
+    prevS.append(prevButton);
+  }
+
 }
+
+displayPreviousSearchedButtons();
