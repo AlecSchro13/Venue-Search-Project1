@@ -19,6 +19,8 @@ searchForm.addEventListener("submit", submitFormHandler);
 =======
 
 >>>>>>> fb655d8e9917dcd8cf3aa6a09b36e20b37564a60
+
+
 searchForm.addEventListener("submit", submitFormHandler)
 genreForm.addEventListener("submit", genreFormHandler)
 
