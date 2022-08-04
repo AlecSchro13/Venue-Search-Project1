@@ -21,13 +21,8 @@ popularbutton.addEventListener("click", (event) => {
   searchVenue(userClick);
 });
 
-<<<<<<< HEAD
-searchForm.addEventListener("submit", submitFormHandler)
-genreForm.addEventListener("submit", genreFormHandler)
-=======
 searchForm.addEventListener("submit", submitFormHandler);
 genreForm.addEventListener("submit", genreFormHandler);
->>>>>>> 287150425edc376dcb8ec8abdcfaf963b1a74348
 
 function genreFormHandler(e) {
   e.preventDefault();
@@ -41,11 +36,6 @@ function genreFormHandler(e) {
     venueUpcomingEvents.innerHTML = "";
   }
 }
-<<<<<<< HEAD
-
-function submitFormHandler (e) {
-=======
->>>>>>> 287150425edc376dcb8ec8abdcfaf963b1a74348
 
 function submitFormHandler(e) {
   e.preventDefault();
