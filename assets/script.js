@@ -210,40 +210,31 @@ function showStartPageEvents(eventArray) {
   }
 }
 
+//Saves the input (venue) of the user to local storage
 function saveToLocalStorage(venueName) {
-  // console.log(`Parker ${venueName}`);
   localStorage.setItem("VenueName", venueName);
   var previous = localStorage.getItem("VenueName"); 
   
   localS.push(previous)
-
   localStorage.setItem("VenueNames", JSON.stringify(localS));
-  // console.log(localS);
   displayVenue();
 }
 
+//Display and append the user's input to the previous searches
 function displayVenue() {
-
   var venuesId = localStorage.getItem("VenueName");
-  console.log(venuesId);
-  console.log("Neww Array?");
-
   var prevButton = document.createElement("button");
-    prevButton.textContent = venuesId;
-    prevButton.classList.add("prevBtn");
-    console.log(prevButton);
-    prevS.append(prevButton);
-  
+
+  prevButton.textContent = venuesId;
+  prevButton.classList.add("prevBtn");
+  prevS.append(prevButton);
 }
 
+//Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
 
-  
   var venuesIds = localStorage.getItem("VenueNames");
-  console.log(venuesIds);
   venuesIds = JSON.parse(venuesIds);
-  console.log(venuesIds);
-  console.log("Neww Array?");
   
   for (i = 0; i < venuesIds.length; i++){
     var prevButton = document.createElement("button");
