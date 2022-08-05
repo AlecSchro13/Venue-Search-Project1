@@ -1,4 +1,4 @@
-const navText = document.querySelector(".jsNav")
+ const navText = document.querySelector(".jsNav")
 
 
 function getEventId () {
