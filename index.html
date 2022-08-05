@@ -4,64 +4,78 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- MDB -->
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css"
       rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
     />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Venue Search</title>
   </head>
 
   <body>
-    <header>
-      <h1>Head</h1>
-    </header>
-    <div class="navBar">
-      <form class="form1">
-        <input class="venueInput" type="text" />
-        <button>Submit Venue</button>
-      </form>
+      <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4">Dreamworld</h1>
+        <p class="lead">Venue and Events</p>
+      </div>
+      <div class="container">
+      <div class="navBar">
+        <form class="form1">
+          <input class="venueInput ui-widget input-group-lg" type="text" id="inputGroup-sizing-lg"/>
+          <button class="btn btn-primary btn-lg">Submit Venue</button>
+        </form>
 
-      <form class="form2">
-        <button>Submit Genre</button>
-        <select id="genreOptions">
-          <option value="Rock">Rock</option>
-          <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
-          <option vlaue="Pop">Pop</option>
-          <option value="Classical">Classical</option>
-          <option value="Country">Country</option>
-          <option value="Jazz">Jazz</option>
-        </select>
-      </form>
-    </div>
-
-    <div class="mainB">
-      <div class="nearUser upcomingevents">
-        <h4>Events Near Current User</h4>
+        <form class="form2">
+          <button class="btn btn-primary btn-lg">Submit Genre</button>
+          <select class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"id="genreOptions">Genre
+            <option value="Rock">Rock</option>
+            <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
+            <option vlaue="Pop">Pop</option>
+            <option value="Classical">Classical</option>
+            <option value="Country">Country</option>
+            <option value="Jazz">Jazz</option>
+          </select>
+        </form>
+      </div>
+<div class="row justify-space-between">
+      <div class="mainB container">
+        <div class="nearUser upcomingevents col-12 col-md-6">
+          <h4 class="upcoming">Events Near Current User</h4>
+        </div>
       </div>
 
-      <div class="otherBox">
-        <div class="prevS">
-          <h4 class="prevTitle">Previous Searches</h4>
+        <div class="otherBox container col-12 col-md-6">
+          <div class="prevS">
+            <h4 class="prevTitle">Previous Searches</h4>
+          </div>
         </div>
-
-        <div class="popV">
-          <h4>Popular Venues</h4>
-          <div class="popBtns">
-            <div>
-              <button class="popBtn mission" data-venue="Mission Ballroom">Mission Ballroom</button>
-              <button class="popBtn redRocks" data-venue="Red Rocks Ampitheatre">Red Rocks Ampitheatre</button>
-            </div>
-            <div>
-              <button class="popBtn marquis" data-venue="Marquis Theater">Marquis Theater</button>
-              <button class="popBtn summit" data-venue="Summit">Summit</button>
-            </div>
+</div>
+          <div class="popV container row col-12 col-md-6">
+            <h4 class="popTitle">Popular Venues</h4>
+            <div class="popBtns container">
+                <button class="popBtn mission" data-venue="Mission Ballroom">
+                  Mission Ballroom
+                </button>
+                <button
+                  class="popBtn redRocks"
+                  data-venue="Red Rocks Ampitheatre"
+                >Red Rocks Ampitheatre
+                </button>
+              </div>
+             
+                <button class="popBtn marquis" data-venue="Marquis Theater">
+                  Marquis Theater
+                </button>
+                <button class="popBtn summit" data-venue="Summit">
+                  Summit
+                </button>
+                </div>
+              </div>
           </div>
         </div>
       </div>
     </div>
-
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
