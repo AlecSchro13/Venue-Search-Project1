@@ -42,6 +42,16 @@ body {
   overflow: scroll;
 }
 
+.popV {
+    height: 75%;
+    max-height: fit-content;
+    border: 4px solid black;
+}
+
+.popVenuesBtnBox {
+  display: flex;
+}
+
 .prevTitle {
   text-align: center;
   margin-top: 10px;
