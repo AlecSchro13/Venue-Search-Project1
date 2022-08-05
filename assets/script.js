@@ -8,9 +8,10 @@ const venueUpcomingEvents = document.querySelector(".upcomingevents");
 
 //popular venue button DOM
 const popularbutton = document.querySelector(".popBtns");
-//const statusEl = document.querySelector("#status")
+// const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
 var localS = [];
+var page = 0;
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 
@@ -217,14 +218,19 @@ function showStartPageEvents(eventArray) {
   }
 }
 
+//Saves the input (venue) of the user to local storage
 function saveToLocalStorage(venueName) {
-  console.log(`Parker ${venueName}`);
   localStorage.setItem("VenueName", venueName);
-  console.log(localS);
-  displayPreviousSearchedButtons();
+  var previous = localStorage.getItem("VenueName"); 
+  
+  localS.push(previous)
+  localStorage.setItem("VenueNames", JSON.stringify(localS));
+  displayVenue();
 }
 
-function displayPreviousSearchedButtons() {
+//Display and append the user's input to the previous searches
+function displayVenue() {
+  var venuesId = localStorage.getItem("VenueName");
   var prevButton = document.createElement("button");
   prevButton.classList.add("btn btn-secondary btn-lg");
   var previous = localStorage.getItem("VenueName");
@@ -233,19 +239,25 @@ function displayPreviousSearchedButtons() {
   localStorage.setItem("Venue Names", localS);
   var venuesIds = localStorage.getItem("Venue Names");
 
-  // console.log(VenueN);
+  prevButton.textContent = venuesId;
+  prevButton.classList.add("prevBtn");
+  prevS.append(prevButton);
+}
 
-  // prevButton.textContent = previous;
-  // prevButton.classList.add("prevBtn");
-  // prevS.append(prevButton);
+//Display the previous searches (venues) to the page
+function displayPreviousSearchedButtons() {
 
-  console.log("Coming up");
-  console.log(previous);
-  console.log(localS);
-
+  var venuesIds = localStorage.getItem("VenueNames");
+  venuesIds = JSON.parse(venuesIds);
+  
+  for (i = 0; i < venuesIds.length; i++){
+    var prevButton = document.createElement("button");
+    prevButton.textContent = venuesIds[i];
+  }
   for (i = 0; i < localS.length; i++) {
     prevButton.textContent = localS[i];
     prevButton.classList.add("prevBtn");
+    console.log(prevButton);
     prevS.append(prevButton);
   }
 }
