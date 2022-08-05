@@ -29,21 +29,12 @@ body {
 }
 
 .nearUser {
-    width: 50%;
-    min-height: 440px;
-    height: fit-content;
-    margin-right: 10px;
     border: 4px solid black;
 }
 
 .prevBtn {
   margin: 10px;
 }
-
-/* .otherBox {
-  width: 50%;
-  margin-left: 10px;
-} */
 
 .prevS {
   height: 200px;
