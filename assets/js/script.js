@@ -143,6 +143,7 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
     let dataLink = document.createElement("a");
     dataLink.setAttribute("href", `./event.html?eventId=${eventId}`);
     dataLink.textContent = `${eventName} playing on ${eventDate} /Genre: ${Genre}`;
+
     listEvent.append(dataLink);
     listappender.append(listEvent);
   }
@@ -150,7 +151,7 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
 
 function getGenreEvents(genreChoiceValue) {
   fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?size=10&stateCode=CO&segmentName=music&classificationName=${genreChoiceValue}&sort=date,asc&apikey=JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3`
+    `https://app.ticketmaster.com/discovery/v2/events.json?size=15&stateCode=CO&segmentName=music&classificationName=${genreChoiceValue}&sort=date,asc&apikey=JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3`
   )
     .then((response) => response.json())
 
@@ -215,6 +216,7 @@ function showStartPageEvents(eventArray) {
   let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
   for (let index = 0; index < eventArray.length; index++) {
+    const eventId = eventArray[index].id
     const nameEvent = eventArray[index].name;
     //console.log(nameEvent);
     //console.log(eventArray);
@@ -224,7 +226,7 @@ function showStartPageEvents(eventArray) {
     let listEvent = document.createElement("li");
     listEvent.classList.add("cssListItem");
     let dataLink = document.createElement("a");
-    dataLink.setAttribute("href", "./event.html");
+    dataLink.setAttribute("href", `./event.html?eventId=${eventId}`);
     dataLink.textContent = `${nameEvent} playing on: ${dateEvent}`;
     listEvent.append(dataLink);
     listappender.append(listEvent);
