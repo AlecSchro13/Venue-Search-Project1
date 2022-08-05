@@ -1,9 +1,9 @@
 :root {
-  seafoam: #2efae3;
-  light-blue: #80c7e0;
-  blue: #90b5f5;
-  purple: #b78aff;
-  dark-blue: #7e7ee0;
+  --seafoam: #2efae3;
+  --light-blue: #80c7e0;
+  --blue: #90b5f5;
+  --purple: #b78aff;
+  --dark-blue: #7e7ee0;
 }
 
 body {
@@ -28,17 +28,6 @@ body {
   text-align: center;
 }
 
-<<<<<<< HEAD
-.nearUser {
-    width: 50%;
-    min-height: 440px;
-    height: fit-content;
-    margin-right: 10px;
-    border: 4px solid black;
-}
-
-=======
->>>>>>> 88309ea86dc47a09ef8e420522185557626b6b43
 .prevBtn {
   margin: 10px;
 }
@@ -54,16 +43,6 @@ body {
   overflow: scroll;
 }
 
-<<<<<<< HEAD
-.popV {
-    height: 75%;
-    max-height: fit-content;
-    border: 4px solid black;
-}
-
-.popVenuesBtnBox {
-  display: flex;
-=======
 .prevTitle {
   text-align: center;
   margin-top: 10px;
@@ -72,7 +51,6 @@ body {
 .popTitle {
   text-align: center;
   margin-top: 10px;
->>>>>>> 88309ea86dc47a09ef8e420522185557626b6b43
 }
 
 .popBtns {
@@ -146,11 +124,6 @@ body {
   border: 4px solid black;
 }
 
-<<<<<<< HEAD
-.page-container {
-  display: flex;
-  flex-wrap: wrap;
-=======
 .mission {
   background: url(./images/mission-ballroom-img.jpeg);
   background-position: center;
@@ -205,5 +178,4 @@ body {
 
 /* // Extra large devices */
 @media (min-width: 1200px) {
->>>>>>> 88309ea86dc47a09ef8e420522185557626b6b43
 }

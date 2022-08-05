@@ -232,36 +232,52 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
-  //console.log(`Parker ${venueName}`);
+  // console.log(`Parker ${venueName}`);
+  console.log(`Venue Name:${venueName}`);
   localStorage.setItem("VenueName", venueName);
-  //console.log(localS);
-  displayPreviousSearchedButtons();
+  var previous = localStorage.getItem("VenueName"); 
+
+  console.log(`This is previous ${previous}`);
+ localS.push(previous);
+ console.log(localS);
+ localStorage.setItem("VenueNames", JSON.stringify(localS));
+ // console.log(localS);
+ displayVenue();
 }
 
+//Display and append the user's input to the previous searches
+function displayVenue() {
+ // prevButton.textContent = previous;
+ var venuesId = localStorage.getItem("VenueName");
+ console.log(venuesId);
+ console.log("Neww Array?");
+
+ var prevButton = document.createElement("button");
+ prevButton.textContent = venuesId;
+ prevButton.classList.add("prevBtn");
+ console.log(prevButton);
+ prevS.append(prevButton);
+
+}
+
+//Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
-  var prevButton = document.createElement("button");
-  var previous = localStorage.getItem("VenueName");
-  localS.push(previous)
 
-  localStorage.setItem("Venue Names", localS);
-  var venuesIds = localStorage.getItem("Venue Names");
+ var venuesIds = localStorage.getItem("VenueNames");
+ console.log(venuesIds);
+ venuesIds = JSON.parse(venuesIds);
+ console.log(venuesIds);
+ console.log("Neww Array?");
 
-  // console.log(VenueN);
-
-  // prevButton.textContent = previous;
-  // prevButton.classList.add("prevBtn");
-  // prevS.append(prevButton);
-
-  //console.log("Coming up");
-  //console.log(previous);
-  //console.log(localS);
-
-  for (i = 0; i < localS.length; i++){
-    prevButton.textContent = localS[i];
-    prevButton.classList.add("prevBtn");
-    prevS.append(prevButton);
-  }
+ for (i = 0; i < venuesIds.length; i++){
+   var prevButton = document.createElement("button");
+   prevButton.textContent = venuesIds[i];
+   prevButton.classList.add("prevBtn");
+   console.log(prevButton);
+   prevS.append(prevButton);
+ }
 
 }
+
 
 displayPreviousSearchedButtons();
