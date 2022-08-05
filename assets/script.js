@@ -80,7 +80,7 @@ function searchVenue(userVenue) {
       upcomingEvents(venueId, venueName);
     });
 
-  // Should change from jQuery to Javascript? Good practices?
+  // Should change from jQuery to Javascript? Good practices??
   $(function autoComplete() {
     $("venueInput").autocomplete({
       source: venueName,
