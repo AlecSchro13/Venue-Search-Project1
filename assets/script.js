@@ -232,15 +232,12 @@ function saveToLocalStorage(venueName) {
 function displayVenue() {
   var venuesId = localStorage.getItem("VenueName");
   var prevButton = document.createElement("button");
-<<<<<<< HEAD
-=======
   prevButton.classList.add("btn btn-secondary btn-lg");
   var previous = localStorage.getItem("VenueName");
   localS.push(previous);
 
   localStorage.setItem("Venue Names", localS);
   var venuesIds = localStorage.getItem("Venue Names");
->>>>>>> 88309ea86dc47a09ef8e420522185557626b6b43
 
   prevButton.textContent = venuesId;
   prevButton.classList.add("prevBtn");
@@ -250,17 +247,15 @@ function displayVenue() {
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
 
-<<<<<<< HEAD
   var venuesIds = localStorage.getItem("VenueNames");
   venuesIds = JSON.parse(venuesIds);
   
   for (i = 0; i < venuesIds.length; i++){
     var prevButton = document.createElement("button");
     prevButton.textContent = venuesIds[i];
-=======
+  }
   for (i = 0; i < localS.length; i++) {
     prevButton.textContent = localS[i];
->>>>>>> 88309ea86dc47a09ef8e420522185557626b6b43
     prevButton.classList.add("prevBtn");
     console.log(prevButton);
     prevS.append(prevButton);
