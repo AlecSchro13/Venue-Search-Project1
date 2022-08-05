@@ -74,7 +74,7 @@ function searchVenue(userVenue) {
       console.log(venueId);
 
       //this is Calling a NEW function TBD
-      saveToLocalStorage(venueName);
+      saveToLocalStorage(venueName); 
 
       //these variables will be used for google maps... TBD
       const lat = data._embedded.venues[0].location.latitude;
