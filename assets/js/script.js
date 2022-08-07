@@ -5,7 +5,6 @@ const venueInputEl = document.querySelector(".venueInput");
 const genreSelectEl = document.querySelector("#genreOptions");
 const venueUpcomingEvents = document.querySelector(".upcomingevents");
 
-
 const popularbutton = document.querySelector(".popBtns");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
@@ -50,12 +49,14 @@ function submitFormHandler(e) {
     searchVenue(userVenue);
   } else {
     venueUpcomingEvents.innerHTML = "";
-    let emptyValue = document.createElement("h2")
-    emptyValue.textContent = "Please Type in a Venue to get upcoming events..."
-    let example = document.createElement("h4")
-    example.textContent = "or Choose a Genre option to view events on a Genre!😅"
-    let example2 = document.createElement("h4")
-    example2.textContent = "You can also select one of our Popular venues if you're unfamilliar with the area!"
+    let emptyValue = document.createElement("h2");
+    emptyValue.textContent = "Please Type in a Venue to get upcoming events...";
+    let example = document.createElement("h4");
+    example.textContent =
+      "or Choose a Genre option to view events on a Genre!😅";
+    let example2 = document.createElement("h4");
+    example2.textContent =
+      "You can also select one of our Popular venues if you're unfamilliar with the area!";
     venueUpcomingEvents.append(emptyValue, example, example2);
   }
 }
@@ -71,15 +72,28 @@ function searchVenue(userVenue) {
       const venueName = data._embedded.venues[0].name;
       const venueId = data._embedded.venues[0].id;
 
+<<<<<<< HEAD
+      //this is Calling a NEW function TBD
+      saveToLocalStorage(venueName);
+
+      //these variables will be used for google maps... TBD
+      const lat = data._embedded.venues[0].location.latitude;
+      const lon = data._embedded.venues[0].location.longitude;
+      const coordinates = `${lat},${lon}`;
+      console.log(coordinates);
+
+=======
       saveToLocalStorage(venueName); 
+>>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
       upcomingEvents(venueId, venueName);
     })
     .catch(() => {
       venueUpcomingEvents.innerHTML = "";
-      let error = document.createElement("h2")
-      error.textContent = "oops.. Something went wrong"
-      let example = document.createElement("h4")
-      example.textContent = "Looks like we found an error.. Please try again!😅"
+      let error = document.createElement("h2");
+      error.textContent = "oops.. Something went wrong";
+      let example = document.createElement("h4");
+      example.textContent =
+        "Looks like we found an error.. Please try again!😅";
       venueUpcomingEvents.append(error, example);
     });
 }
@@ -98,10 +112,11 @@ function upcomingEvents(venueId, venueName) {
     })
     .catch(() => {
       venueUpcomingEvents.innerHTML = "";
-      let noEvents = document.createElement("h2")
-      noEvents.textContent = "No events found for this venue"
-      let example = document.createElement("h4")
-      example.textContent = "try something like Summit or Fillmore Auditorium 😅"
+      let noEvents = document.createElement("h2");
+      noEvents.textContent = "No events found for this venue";
+      let example = document.createElement("h4");
+      example.textContent =
+        "try something like Summit or Fillmore Auditorium 😅";
       venueUpcomingEvents.append(noEvents, example);
     });
 }
@@ -119,6 +134,10 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
 
   for (let index = 0; index < futureEventsArray.length; index++) {
     const eventId = futureEventsArray[index].id;
+<<<<<<< HEAD
+    console.log(eventId);
+=======
+>>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
     const eventName = futureEventsArray[index].name;
     const eventDate = futureEventsArray[index].dates.start.localDate;
     const Genre = futureEventsArray[index].classifications[0].genre.name;
@@ -149,13 +168,19 @@ function getGenreEvents(genreChoiceValue) {
 
 function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
   let titleEl = document.createElement("h4");
+  titleEl.classList.add("showing-events");
   titleEl.textContent = `Showing Events for: ${genreChoice} Genre`;
   let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
 
   //starting Loop here
   for (let index = 0; index < genreEventArray.length; index++) {
+<<<<<<< HEAD
+    const eventId = genreEventArray[index].id;
+    console.log(eventId);
+=======
     const eventId = genreEventArray[index].id
+>>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
     const eventName = genreEventArray[index].name;
     const eventDate = genreEventArray[index].dates.start.localDate;
 
@@ -190,11 +215,12 @@ function showStartPageEvents(eventArray) {
   var userNear = document.querySelector(".nearUser");
   userNear.textContent = "";
   let titleEl = document.createElement("h4");
+  titleEl.classList.add("upcoming");
   titleEl.textContent = `Upcoming Events near Denver, CO`;
   let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
   for (let index = 0; index < eventArray.length; index++) {
-    const eventId = eventArray[index].id
+    const eventId = eventArray[index].id;
     const nameEvent = eventArray[index].name;
     const dateEvent = eventArray[index].dates.start.localDate;
 
@@ -209,17 +235,59 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
+<<<<<<< HEAD
+  // console.log(`Parker ${venueName}`);
+  console.log(`Venue Name:${venueName}`);
+  localStorage.setItem("VenueName", venueName);
+  var previous = localStorage.getItem("VenueName");
+
+  console.log(`This is previous ${previous}`);
+  localS.push(previous);
+  console.log(localS);
+  localStorage.setItem("VenueNames", JSON.stringify(localS));
+  // console.log(localS);
+  displayVenue();
+}
+
+//Display and append the user's input to the previous searches
+function displayVenue() {
+  // prevButton.textContent = previous;
+  var venuesId = localStorage.getItem("VenueName");
+  console.log(venuesId);
+  console.log("Neww Array?");
+
+  var prevButton = document.createElement("button");
+  prevButton.textContent = venuesId;
+  prevButton.classList.add("prevBtn");
+  console.log(prevButton);
+  prevS.append(prevButton);
+=======
   var previous = localStorage.getItem("VenueNames"); 
 
   localS.push(venueName);
   localStorage.setItem("VenueNames", JSON.stringify(localS));
 
   displayPreviousSearchedButtons();
+>>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
 }
 
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
+  var venuesIds = localStorage.getItem("VenueNames");
+  console.log(venuesIds);
+  venuesIds = JSON.parse(venuesIds);
+  console.log(venuesIds);
+  console.log("Neww Array?");
 
+<<<<<<< HEAD
+  for (i = 0; i < venuesIds.length; i++) {
+    var prevButton = document.createElement("button");
+    prevButton.textContent = venuesIds[i];
+    prevButton.classList.add("prevBtn");
+    console.log(prevButton);
+    prevS.append(prevButton);
+  }
+=======
   var venuesIds = JSON.parse(localStorage.getItem("VenueNames"));
   prevS.innerHTML = "";
 
@@ -230,7 +298,7 @@ function displayPreviousSearchedButtons() {
     prevS.append(prevButton);
   }
 
+>>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
 }
-
 
 displayPreviousSearchedButtons();
