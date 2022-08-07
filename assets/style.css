@@ -1,19 +1,139 @@
-:root {
-  --seafoam: #2efae3;
-  --light-blue: #80c7e0;
-  --blue: #90b5f5;
-  --purple: #b78aff;
-  --dark-blue: #7e7ee0;
-}
-
 body {
-  background-color: lightblue;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 }
 
-.jumbotron {
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.site-title,
+.site-title-event {
+  background-image: url("./images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 40px;
+  font-weight: 700;
   text-align: center;
-  padding: 40px;
+  padding: 30px;
   border: 4px solid black;
+}
+
+.fa-music {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-25px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  58% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  65% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+.s {
+  animation: bounce 5s ease infinite;
+}
+
+.e {
+  animation: bounce 5s ease infinite 0.2s;
+}
+
+.a {
+  animation: bounce 5s ease infinite 0.4s;
+}
+
+.r {
+  animation: bounce 5s ease infinite 0.6s;
+}
+
+.c {
+  animation: bounce 5s ease infinite 0.8s;
+}
+
+.h {
+  animation: bounce 5s ease infinite 1s;
+  margin-right: 10px;
+}
+.r2 {
+  animation: bounce 5s ease infinite 1.2s;
+}
+
+.e2 {
+  animation: bounce 5s ease infinite 1.4s;
+}
+
+.s2 {
+  animation: bounce 5s ease infinite 1.6s;
+}
+
+.u {
+  animation: bounce 5s ease infinite 1.8s;
+}
+
+.l {
+  animation: bounce 5s ease infinite 2s;
+}
+
+.t {
+  animation: bounce 5s ease infinite 2.2s;
+}
+.s3 {
+  animation: bounce 5s ease infinite 2.4s;
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleX(1);
+  }
+  25% {
+    transform: scaleX(0.4);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  75% {
+    transform: scaleX(0.9);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.site-title-event {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .navBar {
@@ -24,28 +144,64 @@ body {
   border: 4px solid black;
 }
 
+.showing-events,
 .upcoming {
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .nearUser {
-    border: 4px solid black;
+  border: 4px solid black;
 }
 
-.prevBtn {
+a:-webkit-any-link {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+#goBack,
+.buy-tickets,
+.drop-menu,
+.prevBtn,
+.submit-venue,
+.submit-genre {
   margin: 10px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: black;
+  border-color: white;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#ticket-icon {
+  margin-right: 20px;
+}
+
+.venueInput {
+  line-height: 2.5rem;
+  font-size: x-large;
 }
 
 .prevS {
   height: 200px;
   border: 4px solid black;
   overflow: scroll;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .popV {
-    height: 75%;
-    max-height: fit-content;
-    border: 4px solid black;
+  height: 75%;
+  max-height: fit-content;
+  border: 4px solid black;
 }
 
 .popVenuesBtnBox {
@@ -69,13 +225,18 @@ body {
 }
 
 .popBtn {
-  height: 120px;
-  width: 120px;
-  margin: 10px;
+  height: 150px;
+  width: 150px;
+  margin: 5px;
+}
+
+.btnFlex {
+  padding-right: 20px;
 }
 
 #goBack {
   width: 150px;
+  text-decoration: none;
 }
 
 .eventBox {
@@ -92,6 +253,7 @@ body {
   justify-content: space-around;
   max-height: 500px;
   text-align: center;
+  font-size: 18px;
 }
 
 .topBox {
@@ -118,11 +280,12 @@ body {
 }
 
 .cssListItem {
+  font-family: inherit;
   list-style: none;
   text-decoration: none;
   color: black;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 20pxpx;
 }
 
 .nearUser {
@@ -131,11 +294,16 @@ body {
 
 .popV {
   border: 4px solid black;
+  padding-bottom: 20px;
 }
 
 .page-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.col-5 {
+  padding-right: 0%;
 }
 
 .mission {
@@ -146,6 +314,8 @@ body {
   color: white;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgb(86, 186, 248);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .redRocks {
@@ -156,6 +326,8 @@ body {
   color: white;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgb(248, 65, 65);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .marquis {
@@ -166,6 +338,8 @@ body {
   color: white;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgb(218, 101, 244);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .summit {
@@ -176,20 +350,20 @@ body {
   color: white;
   font-weight: bold;
   text-shadow: 2px 3px 5px black;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-/* // Small devices */
-@media (min-width: 576px) {
+.mainContent {
+  height: 500px;
 }
 
-/* // Medium devices */
-@media (min-width: 768px) {
-}
+/* @media (min-width: 992px) {
+  .container {
+    max-width: 1131px;
+  }
+} */
 
-/* // Large devices */
-@media (min-width: 992px) {
-}
-
-/* // Extra large devices */
-@media (min-width: 1200px) {
+.container {
+  max-width: 100%;
 }

@@ -14,6 +14,11 @@ User Story:
 
 Motivation: The motivation for this application is to help tourists and locals easily find upcoming music events in the state of Colorado by searching by venue or by genre.
 
+
+
+//screenshots and screenrecordings go here
+
+
 Team Members/Roles:
 
 Lorena: Project Manager, API
@@ -23,3 +28,9 @@ Colin: CSS style page, Functions
 Parker: HTML, Javascript
 
 Alec: Github, presentation, Javascript
+
+
+Technologies Used:
+
+- Web Api's to pull music venues and their events to the HTML
+- Map Api to show the location of the venue and address
