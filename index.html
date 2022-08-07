@@ -20,7 +20,7 @@
   <div class="container">
       <div class="navBar">
         <form class="form1">
-          <input class="venueInput ui-widget input-group-lg" type="text" id="inputGroup-sizing-lg" />
+          <input required class="venueInput ui-widget input-group-lg" type="text" id="inputGroup-sizing-lg" />
           <button class="btn btn-primary btn-lg">Submit Venue</button>
         </form>
 
@@ -28,6 +28,7 @@
           <button class="btn btn-primary btn-lg">Submit Genre</button>
           <select class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" id="genreOptions">Genre
+            <option value="" disabled selected>select your Genre</option>
             <option value="Rock">Rock</option>
             <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
             <option vlaue="Pop">Pop</option>
