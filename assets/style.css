@@ -23,8 +23,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   margin-top: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-size: 40px;
   font-weight: 700;
   text-align: center;
@@ -162,7 +162,6 @@ a:-webkit-any-link {
   text-align: center;
 }
 
-<<<<<<< HEAD
 #goBack,
 .buy-tickets,
 .drop-menu,
@@ -189,14 +188,6 @@ a:-webkit-any-link {
 .venueInput {
   line-height: 2.5rem;
   font-size: x-large;
-=======
-.nearUser {
-    border: 4px solid black;
-}
-
-.prevBtn {
-  margin: 10px;
->>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
 }
 
 .prevS {
@@ -311,13 +302,10 @@ a:-webkit-any-link {
   flex-wrap: wrap;
 }
 
-<<<<<<< HEAD
 .col-5 {
   padding-right: 0%;
 }
 
-=======
->>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
 .mission {
   background: url(./images/mission-ballroom-img.jpeg);
   background-position: center;

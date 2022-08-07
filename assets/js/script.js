@@ -8,7 +8,7 @@ const venueUpcomingEvents = document.querySelector(".upcomingevents");
 const popularbutton = document.querySelector(".popBtns");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
-var localS = []
+var localS = [];
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 
@@ -32,7 +32,8 @@ genreForm.addEventListener("submit", genreFormHandler);
 function genreFormHandler(e) {
   e.preventDefault();
   //selects the option chosen from dropdown menue
-  let genreChoiceValue = genreSelectEl.options[genreSelectEl.selectedIndex].value;
+  let genreChoiceValue =
+    genreSelectEl.options[genreSelectEl.selectedIndex].value;
 
   if (genreChoiceValue) {
     getGenreEvents(genreChoiceValue);
@@ -72,7 +73,6 @@ function searchVenue(userVenue) {
       const venueName = data._embedded.venues[0].name;
       const venueId = data._embedded.venues[0].id;
 
-<<<<<<< HEAD
       //this is Calling a NEW function TBD
       saveToLocalStorage(venueName);
 
@@ -82,9 +82,6 @@ function searchVenue(userVenue) {
       const coordinates = `${lat},${lon}`;
       console.log(coordinates);
 
-=======
-      saveToLocalStorage(venueName); 
->>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
       upcomingEvents(venueId, venueName);
     })
     .catch(() => {
@@ -130,14 +127,10 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
   //creating <ol> for <li> tags to be appended to
   let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
- 
 
   for (let index = 0; index < futureEventsArray.length; index++) {
     const eventId = futureEventsArray[index].id;
-<<<<<<< HEAD
     console.log(eventId);
-=======
->>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
     const eventName = futureEventsArray[index].name;
     const eventDate = futureEventsArray[index].dates.start.localDate;
     const Genre = futureEventsArray[index].classifications[0].genre.name;
@@ -175,12 +168,8 @@ function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
 
   //starting Loop here
   for (let index = 0; index < genreEventArray.length; index++) {
-<<<<<<< HEAD
     const eventId = genreEventArray[index].id;
     console.log(eventId);
-=======
-    const eventId = genreEventArray[index].id
->>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
     const eventName = genreEventArray[index].name;
     const eventDate = genreEventArray[index].dates.start.localDate;
 
@@ -235,7 +224,6 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
-<<<<<<< HEAD
   // console.log(`Parker ${venueName}`);
   console.log(`Venue Name:${venueName}`);
   localStorage.setItem("VenueName", venueName);
@@ -261,14 +249,6 @@ function displayVenue() {
   prevButton.classList.add("prevBtn");
   console.log(prevButton);
   prevS.append(prevButton);
-=======
-  var previous = localStorage.getItem("VenueNames"); 
-
-  localS.push(venueName);
-  localStorage.setItem("VenueNames", JSON.stringify(localS));
-
-  displayPreviousSearchedButtons();
->>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
 }
 
 //Display the previous searches (venues) to the page
@@ -279,7 +259,6 @@ function displayPreviousSearchedButtons() {
   console.log(venuesIds);
   console.log("Neww Array?");
 
-<<<<<<< HEAD
   for (i = 0; i < venuesIds.length; i++) {
     var prevButton = document.createElement("button");
     prevButton.textContent = venuesIds[i];
@@ -287,18 +266,6 @@ function displayPreviousSearchedButtons() {
     console.log(prevButton);
     prevS.append(prevButton);
   }
-=======
-  var venuesIds = JSON.parse(localStorage.getItem("VenueNames"));
-  prevS.innerHTML = "";
-
-  for (i = 0; i < venuesIds.length; i++){
-    var prevButton = document.createElement("button");
-    prevButton.textContent = venuesIds[i];
-    prevButton.classList.add("prevBtn");
-    prevS.append(prevButton);
-  }
-
->>>>>>> 0effd22ebbb2ef1f7b8395c595abe91032f88d80
 }
 
 displayPreviousSearchedButtons();
