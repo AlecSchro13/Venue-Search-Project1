@@ -9,14 +9,22 @@ const venueUpcomingEvents = document.querySelector(".upcomingevents");
 const popularbutton = document.querySelector(".popBtns");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
-var localS = [];
+var localS = []
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 
 popularbutton.addEventListener("click", (event) => {
   event.preventDefault();
   let userClick = event.target.getAttribute("data-venue");
-  searchVenue(userClick);
+  if (event.target.nodeName == "BUTTON") {
+    searchVenue(userClick);
+  }
+});
+
+prevS.addEventListener("click", (e) => {
+  if (e.target.nodeName == "BUTTON") {
+    searchVenue(e.target.textContent);
+  }
 });
 
 searchForm.addEventListener("submit", submitFormHandler);
@@ -25,9 +33,7 @@ genreForm.addEventListener("submit", genreFormHandler);
 function genreFormHandler(e) {
   e.preventDefault();
   //selects the option chosen from dropdown menue
-  let genreChoiceValue =
-    genreSelectEl.options[genreSelectEl.selectedIndex].value;
-  console.log(genreChoiceValue);
+  let genreChoiceValue = genreSelectEl.options[genreSelectEl.selectedIndex].value;
 
   if (genreChoiceValue) {
     getGenreEvents(genreChoiceValue);
@@ -41,12 +47,8 @@ function submitFormHandler(e) {
   let userVenue = venueInputEl.value.trim();
 
   if (userVenue) {
-    //tbd..
-    //statusEl.textContent = "Searching Events... ";
-
     searchVenue(userVenue);
   } else {
-    //also tbd
     venueUpcomingEvents.innerHTML = "";
     let emptyValue = document.createElement("h2")
     emptyValue.textContent = "Please Type in a Venue to get upcoming events..."
@@ -63,25 +65,13 @@ function searchVenue(userVenue) {
 
   fetch(requestUrl)
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       const venueName = data._embedded.venues[0].name;
-      console.log(venueName);
       const venueId = data._embedded.venues[0].id;
-      console.log(venueId);
 
-      //this is Calling a NEW function TBD
       saveToLocalStorage(venueName); 
-
-      //these variables will be used for google maps... TBD
-      const lat = data._embedded.venues[0].location.latitude;
-      const lon = data._embedded.venues[0].location.longitude;
-      const coordinates = `${lat},${lon}`;
-      console.log(coordinates);
-
       upcomingEvents(venueId, venueName);
     })
     .catch(() => {
@@ -102,9 +92,7 @@ function upcomingEvents(venueId, venueName) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       const futureEventsArray = data._embedded.events;
-      console.log(futureEventsArray);
       //this function call is to render upcoming events to screen (and passing venue name over to next function)
       displayUpcomingEvents(futureEventsArray, venueName);
     })
@@ -127,17 +115,14 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
   //creating <ol> for <li> tags to be appended to
   let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
-  //sort array before going through for loop
+ 
 
   for (let index = 0; index < futureEventsArray.length; index++) {
-    const eventId = futureEventsArray[index].id
-    console.log(eventId);
+    const eventId = futureEventsArray[index].id;
     const eventName = futureEventsArray[index].name;
-    //console.log(eventName);
     const eventDate = futureEventsArray[index].dates.start.localDate;
-    //console.log(eventDate);
     const Genre = futureEventsArray[index].classifications[0].genre.name;
-    //console.log(Genre);
+
     let listEvent = document.createElement("li");
     listEvent.classList.add("cssListItem");
     let dataLink = document.createElement("a");
@@ -156,9 +141,7 @@ function getGenreEvents(genreChoiceValue) {
     .then((response) => response.json())
 
     .then((data) => {
-      console.log(data);
       let genreEventArray = data._embedded.events;
-      console.log(genreEventArray);
       displayGenreUpcomingEvents(genreEventArray, genreChoiceValue);
     })
     .catch((error) => console.log("error", error));
@@ -173,11 +156,8 @@ function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
   //starting Loop here
   for (let index = 0; index < genreEventArray.length; index++) {
     const eventId = genreEventArray[index].id
-    console.log(eventId);
     const eventName = genreEventArray[index].name;
-    console.log(eventName);
     const eventDate = genreEventArray[index].dates.start.localDate;
-    console.log(eventDate);
 
     let listEvent = document.createElement("li");
     listEvent.classList.add("cssListItem");
@@ -197,9 +177,7 @@ function startPageEvents() {
     .then((response) => response.json())
 
     .then((data) => {
-      console.log(data);
       eventArray = data._embedded.events;
-      console.log(eventArray);
       showStartPageEvents(eventArray);
     })
 
@@ -218,10 +196,7 @@ function showStartPageEvents(eventArray) {
   for (let index = 0; index < eventArray.length; index++) {
     const eventId = eventArray[index].id
     const nameEvent = eventArray[index].name;
-    //console.log(nameEvent);
-    //console.log(eventArray);
     const dateEvent = eventArray[index].dates.start.localDate;
-    //console.log(dateEvent);
 
     let listEvent = document.createElement("li");
     listEvent.classList.add("cssListItem");
@@ -234,50 +209,26 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
-  // console.log(`Parker ${venueName}`);
-  console.log(`Venue Name:${venueName}`);
-  localStorage.setItem("VenueName", venueName);
-  var previous = localStorage.getItem("VenueName"); 
+  var previous = localStorage.getItem("VenueNames"); 
 
-  console.log(`This is previous ${previous}`);
- localS.push(previous);
- console.log(localS);
- localStorage.setItem("VenueNames", JSON.stringify(localS));
- // console.log(localS);
- displayVenue();
-}
+  localS.push(venueName);
+  localStorage.setItem("VenueNames", JSON.stringify(localS));
 
-//Display and append the user's input to the previous searches
-function displayVenue() {
- // prevButton.textContent = previous;
- var venuesId = localStorage.getItem("VenueName");
- console.log(venuesId);
- console.log("Neww Array?");
-
- var prevButton = document.createElement("button");
- prevButton.textContent = venuesId;
- prevButton.classList.add("prevBtn");
- console.log(prevButton);
- prevS.append(prevButton);
-
+  displayPreviousSearchedButtons();
 }
 
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
 
- var venuesIds = localStorage.getItem("VenueNames");
- console.log(venuesIds);
- venuesIds = JSON.parse(venuesIds);
- console.log(venuesIds);
- console.log("Neww Array?");
+  var venuesIds = JSON.parse(localStorage.getItem("VenueNames"));
+  prevS.innerHTML = "";
 
- for (i = 0; i < venuesIds.length; i++){
-   var prevButton = document.createElement("button");
-   prevButton.textContent = venuesIds[i];
-   prevButton.classList.add("prevBtn");
-   console.log(prevButton);
-   prevS.append(prevButton);
- }
+  for (i = 0; i < venuesIds.length; i++){
+    var prevButton = document.createElement("button");
+    prevButton.textContent = venuesIds[i];
+    prevButton.classList.add("prevBtn");
+    prevS.append(prevButton);
+  }
 
 }
 
