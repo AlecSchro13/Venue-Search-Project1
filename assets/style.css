@@ -189,6 +189,11 @@ body {
   height: 500px;
 }
 
+img {
+  width: 50%;
+  border: 5px solid black;
+}
+
 /* // Small devices */
 @media (min-width: 576px) {
 }
