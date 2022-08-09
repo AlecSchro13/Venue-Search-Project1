@@ -5,7 +5,7 @@ const venueInputEl = document.querySelector(".venueInput");
 const genreSelectEl = document.querySelector("#genreOptions");
 const venueUpcomingEvents = document.querySelector(".upcomingevents");
 
-const popularbutton = document.querySelector(".popBtns");
+const popularbutton = document.querySelector(".popV");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
 var prevTitle = document.createElement("h4");
@@ -63,6 +63,10 @@ function submitFormHandler(e) {
       "You can also select one of our Popular venues if you're unfamilliar with the area!";
     venueUpcomingEvents.append(emptyValue, example, example2);
   }
+}
+
+function convert2(input) {
+  return moment().format('L');  
 }
 
 function searchVenue(userVenue) {
@@ -132,7 +136,7 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
     listEvent.classList.add("cssListItem");
     let dataLink = document.createElement("a");
     dataLink.setAttribute("href", `./event.html?eventId=${eventId}`);
-    dataLink.textContent = `${eventName} playing on ${eventDate} /Genre: ${Genre}`;
+    dataLink.textContent = `${eventName} playing on ${convert2(eventDate)} /Genre: ${Genre}`;
 
     listEvent.append(dataLink);
     listappender.append(listEvent);
@@ -169,7 +173,7 @@ function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
     listEvent.classList.add("cssListItem");
     let dataLink = document.createElement("a");
     dataLink.setAttribute("href", `./event.html?eventId=${eventId}`);
-    dataLink.textContent = `${eventName} playing on: ${eventDate}`;
+    dataLink.textContent = `${eventName} playing on: ${convert2(eventDate)}`;
     listEvent.append(dataLink);
     listappender.append(listEvent);
   }
@@ -212,7 +216,7 @@ function showStartPageEvents(eventArray) {
     listEvent.classList.add("cssListItem");
     let dataLink = document.createElement("a");
     dataLink.setAttribute("href", `./event.html?eventId=${eventId}`);
-    dataLink.textContent = `${nameEvent} playing on: ${dateEvent}`;
+    dataLink.textContent = `${nameEvent} playing on: ${convert2(dateEvent)}`;
     listEvent.append(dataLink);
     listappender.append(listEvent);
   }
@@ -244,6 +248,7 @@ function displayVenue() {
 }
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
+<<<<<<< HEAD
  var venuesIds = localStorage.getItem("VenueNames");
  console.log(venuesIds);
  venuesIds = JSON.parse(venuesIds);
@@ -256,6 +261,17 @@ function displayPreviousSearchedButtons() {
    console.log(prevButton);
    prevS.append(prevButton);
  }
+=======
+  var venuesIds = JSON.parse(localStorage.getItem("VenueNames")) || 0;
+  prevS.innerHTML = "";
+
+  for (i = 0; i < venuesIds.length; i++) {
+    var prevButton = document.createElement("button");
+    prevButton.textContent = venuesIds[i];
+    prevButton.classList.add("prevBtn");
+    prevS.append(prevButton);
+  }
+>>>>>>> 6ba141bcac6accb0634a685d01bfa7c66abc851b
 }
 
 displayPreviousSearchedButtons();

@@ -140,7 +140,6 @@ body {
 .navBar {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   margin: 10px 0;
 }
 
@@ -337,8 +336,13 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   color: black;
   font-weight: 400;
+<<<<<<< HEAD
   font-size: 18px;
   margin-left: -34px;
+=======
+  font-size: 20px;
+  line-height: 2;
+>>>>>>> 6ba141bcac6accb0634a685d01bfa7c66abc851b
 }
 
 .popV {
