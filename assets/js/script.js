@@ -12,7 +12,7 @@ const venueResults = document.getElementById("results");
 const popularbutton = document.querySelector(".popV");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
-var localS = [];
+
 const venueArray = [
   "Grizzly Rose",
   "Summit",
@@ -63,7 +63,12 @@ const venueArray = [
   "Renewal Festival Grounds",
 ];
 
+var prevTitle = document.createElement("h4");
+var localS = [];
+
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
+
+prevTitle.classList.add = "PrevTitle";
 
 popularbutton.addEventListener("click", (event) => {
   event.preventDefault();
@@ -307,18 +312,34 @@ venueResults.addEventListener("click", function (event) {
 });
 
 function saveToLocalStorage(venueName) {
+  // console.log(Parker ${venueName});
+  console.log(`Venue Name:${venueName}`);
   localStorage.setItem("VenueName", venueName);
   var previous = localStorage.getItem("VenueName");
-
+  console.log(`This is previous ${previous}`);
   localS.push(previous);
+  console.log(localS);
   localStorage.setItem("VenueNames", JSON.stringify(localS));
-  displayPreviousSearchedButtons();
+  // console.log(localS);
+  displayVenue();
+}
+//Display and append the user's input to the previous searches
+function displayVenue() {
+  // prevButton.textContent = previous;
+  var venuesId = localStorage.getItem("VenueName");
+  console.log(venuesId);
+  console.log("Neww Array?");
+  var prevButton = document.createElement("button");
+  prevButton.textContent = venuesId;
+  prevButton.classList.add("prevBtn");
+  console.log(prevButton);
+  prevS.append(prevButton);
 }
 
+//Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
-  var venuesIds = JSON.parse(localStorage.getItem("VenueNames")) || 0;
-  prevS.innerHTML = "";
-
+  var venuesIds = localStorage.getItem("VenueNames");
+  venuesIds = JSON.parse(venuesIds);
   for (i = 0; i < venuesIds.length; i++) {
     var prevButton = document.createElement("button");
     prevButton.textContent = venuesIds[i];

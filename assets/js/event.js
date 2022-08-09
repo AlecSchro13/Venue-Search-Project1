@@ -26,7 +26,7 @@ function geoFindMe() {
   }
 
   function error() {
-    console.log("error");
+    console.log(error);
   }
 
   if (navigator.geolocation) {
