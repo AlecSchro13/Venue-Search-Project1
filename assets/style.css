@@ -289,6 +289,10 @@ body::-webkit-scrollbar-thumb {
   border: 4px solid black;
 }
 
+#eventName {
+  font-size: 40px;
+}
+
 .eventDisplay {
   text-align: center;
   padding-bottom: 20px;
@@ -417,6 +421,29 @@ img {
   }
 }
 
+@media (max-width: 780px) {
+  .mainC {
+    height: max-content;
+    padding: 20px;
+    display: block;
+  }
+  .topBox {
+    width: 100%;
+    margin-bottom: 20px;
+    display: contents;
+  }
+  .bottomBox {
+    position: relative;
+    overflow: hidden;
+    height: 440px;
+    width: 100%;
+  }
+  .eventBox {
+    border: 4px solid black;
+    min-height: 100%;
+  }
+}
+
 /* // Small devices */
 @media (max-width: 540px) {
   /* // Small devices */
@@ -435,6 +462,15 @@ img {
     margin-left: 0;
     margin-top: 10px;
   }
+  .buy-tickets {
+    margin: 0;
+    padding: 0;
+  }
+  .bottomBox {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
 }
 
 @media (max-width: 380px) {
