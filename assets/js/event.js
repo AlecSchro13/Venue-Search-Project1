@@ -4,11 +4,18 @@ let venueLocation;
 let userLat;
 let userLon;
 
+function convert(input) {
+  return moment(input, 'HH:mm:ss').format('h:mm A');
+}
+
+function convert2(input) {
+  return moment().format('LL');  
+}
+
 function geoFindMe() {
   function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    console.log(`${latitude}, ${longitude}`);
     userLat = latitude;
     userLon = longitude;
     usersLocation = new google.maps.LatLng(
@@ -31,9 +38,7 @@ geoFindMe();
 
 function getEventId() {
   var htmlInfo = document.location.search;
-  console.log(htmlInfo);
   var eventId = htmlInfo.split("=")[1];
-  console.log(eventId);
 
   if (eventId) {
     fetchEventInfo(eventId);
@@ -59,10 +64,9 @@ function fetchEventInfo(eventId) {
       let genre = data.classifications[0].genre.name;
       document.getElementById("genre").textContent = genre;
       let eventDate = data.dates.start.localDate;
-      document.getElementById("eventDate").textContent = eventDate;
+      document.getElementById("eventDate").textContent = convert2(eventDate);
       let startTime = data.dates.start.localTime;
-      document.getElementById("startTime").textContent = startTime
-      document.getElementById("startTime").textContent = startTime;
+      document.getElementById("startTime").textContent = convert(startTime)
       let city = data._embedded.venues[0].city.name;
       document.getElementById("city").textContent = city;
       let state = data._embedded.venues[0].state.stateCode;
@@ -104,12 +108,12 @@ function fetchEventInfo(eventId) {
 }
 
 
-for (let index = 0; index < img.length; index++) {
-  let eventImage = url === 16_9
-  if (eventImage) {
-    then 
-  }
-}
+// for (let index = 0; index < img.length; index++) {
+//   let eventImage = url === 16_9
+//   if (eventImage) {
+//     then 
+//   }
+// }
 
 
 // for (let index = 0; index < img.length; index++) {
