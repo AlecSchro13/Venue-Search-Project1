@@ -36,13 +36,13 @@ https://user-images.githubusercontent.com/105956930/183723316-e655dc36-449d-47d0
 
 Team Members/Roles:
 
-Lorena: Project Manager, API
+Lorena: _Project Manager, API_
 
-Colin: CSS style page, Functions
+Colin: _CSS style page, Functions_
 
-Parker: HTML, Javascript
+Parker: _HTML, Javascript_
 
-Alec: Github, presentation, Javascript
+Alec: _Github, presentation, Javascript_
 
 
 Technologies Used:
