@@ -8,9 +8,12 @@ const venueUpcomingEvents = document.querySelector(".upcomingevents");
 const popularbutton = document.querySelector(".popV");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
-var localS = [];
+var prevTitle = document.createElement("h4");
+var localS = []
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
+
+prevTitle.classList.add = "PrevTitle";
 
 popularbutton.addEventListener("click", (event) => {
   event.preventDefault();
@@ -220,25 +223,43 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
+  // console.log(Parker ${venueName});
+  console.log(`Venue Name:${venueName}`);
   localStorage.setItem("VenueName", venueName);
   var previous = localStorage.getItem("VenueName");
-
-  localS.push(previous);
-  localStorage.setItem("VenueNames", JSON.stringify(localS));
-  displayPreviousSearchedButtons();
+  console.log(`This is previous ${previous}`);
+ localS.push(previous);
+ console.log(localS);
+ localStorage.setItem("VenueNames", JSON.stringify(localS));
+ // console.log(localS);
+ displayVenue();
 }
-
+//Display and append the user's input to the previous searches
+function displayVenue() {
+ // prevButton.textContent = previous;
+ var venuesId = localStorage.getItem("VenueName");
+ console.log(venuesId);
+ console.log("Neww Array?");
+ var prevButton = document.createElement("button");
+ prevButton.textContent = venuesId;
+ prevButton.classList.add("prevBtn");
+ console.log(prevButton);
+ prevS.append(prevButton);
+}
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
-  var venuesIds = JSON.parse(localStorage.getItem("VenueNames")) || 0;
-  prevS.innerHTML = "";
-
-  for (i = 0; i < venuesIds.length; i++) {
-    var prevButton = document.createElement("button");
-    prevButton.textContent = venuesIds[i];
-    prevButton.classList.add("prevBtn");
-    prevS.append(prevButton);
-  }
+ var venuesIds = localStorage.getItem("VenueNames");
+ console.log(venuesIds);
+ venuesIds = JSON.parse(venuesIds);
+ console.log(venuesIds);
+ console.log("Neww Array?");
+ for (i = 0; i < venuesIds.length; i++){
+   var prevButton = document.createElement("button");
+   prevButton.textContent = venuesIds[i];
+   prevButton.classList.add("prevBtn");
+   console.log(prevButton);
+   prevS.append(prevButton);
+ }
 }
 
 displayPreviousSearchedButtons();
