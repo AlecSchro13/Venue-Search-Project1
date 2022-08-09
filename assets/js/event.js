@@ -17,7 +17,7 @@ function geoFindMe() {
   }
 
   function error() {
-    console.log("error");
+    console.log(error);
   }
 
   if (navigator.geolocation) {
@@ -100,7 +100,7 @@ function fetchEventInfo(eventId) {
 //   }
 // }
 
-getEventId();
+
 
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();

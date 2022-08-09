@@ -206,8 +206,6 @@ a:-webkit-any-link {
   margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
-=======
 .popV {
   height: 75%;
   max-height: fit-content;
@@ -218,7 +216,6 @@ a:-webkit-any-link {
   display: flex;
 }
 
->>>>>>> c3ad15a799a5dd8a775ed39ffb975f7595cf5a52
 .prevTitle {
   text-align: center;
   margin-top: 10px;
@@ -317,13 +314,10 @@ a:-webkit-any-link {
   flex-wrap: wrap;
 }
 
-<<<<<<< HEAD
-=======
 .col-5 {
   padding-right: 0%;
 }
 
->>>>>>> c3ad15a799a5dd8a775ed39ffb975f7595cf5a52
 .mission {
   background: url(./images/mission-ballroom-img.jpeg);
   background-position: center;

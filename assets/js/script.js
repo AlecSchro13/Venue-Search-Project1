@@ -8,9 +8,12 @@ const venueUpcomingEvents = document.querySelector(".upcomingevents");
 const popularbutton = document.querySelector(".popBtns");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
+var prevTitle = document.createElement("h4");
 var localS = []
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
+
+prevTitle.classList.add = "PrevTitle";
 
 popularbutton.addEventListener("click", (event) => {
   event.preventDefault();
@@ -229,7 +232,8 @@ function saveToLocalStorage(venueName) {
 function displayPreviousSearchedButtons() {
   var venuesIds = JSON.parse(localStorage.getItem("VenueNames"));
   prevS.innerHTML = "";
-
+  prevTitle.textContent = "Previous Searches";
+  prevS.append(prevTitle);
   for (i = 0; i < venuesIds.length; i++){
     var prevButton = document.createElement("button");
     prevButton.textContent = venuesIds[i];
