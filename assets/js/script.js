@@ -227,7 +227,7 @@ function saveToLocalStorage(venueName) {
 
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
-  var venuesIds = JSON.parse(localStorage.getItem("VenueNames"));
+  var venuesIds = JSON.parse(localStorage.getItem("VenueNames")) || 0;
   prevS.innerHTML = "";
 
   for (i = 0; i < venuesIds.length; i++){
