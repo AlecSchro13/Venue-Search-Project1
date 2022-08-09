@@ -195,6 +195,7 @@ a:-webkit-any-link {
 .venueInput {
   line-height: 2.5rem;
   font-size: x-large;
+  width: 100%;
 }
 
 .prevBtn {
