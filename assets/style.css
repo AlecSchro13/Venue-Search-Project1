@@ -196,7 +196,6 @@ a:-webkit-any-link {
 
 .prevBtn {
   margin: 10px;
-
 }
 
 .prevS {
@@ -367,11 +366,30 @@ a:-webkit-any-link {
   height: 500px;
 }
 
+
+img {
+  width: 50%;
+  border: 5px solid black;
+}
+
+/* // Small devices */
+@media (min-width: 576px) {
+}
+
+/* // Medium devices */
+@media (min-width: 768px) {
+}
+
+/* // Large devices */
+@media (min-width: 992px) {
+}
+
 /* @media (min-width: 992px) {
   .container {
     max-width: 1131px;
   }
 } */
+
 
 .container {
   max-width: 100%;
