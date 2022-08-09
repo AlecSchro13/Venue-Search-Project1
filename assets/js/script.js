@@ -1,15 +1,70 @@
 const searchForm = document.querySelector(".form1");
 const genreForm = document.querySelector(".form2");
-
 const venueInputEl = document.querySelector(".venueInput");
 const genreSelectEl = document.querySelector("#genreOptions");
 const venueUpcomingEvents = document.querySelector(".upcomingevents");
 
+results.style.display = "none";
+
+const autocomplete = document.querySelector("#inputGroup-sizing-lg");
+const venueResults = document.getElementById("results");
+
 const popularbutton = document.querySelector(".popV");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
+
+const venueArray = [
+  "Grizzly Rose",
+  "Summit",
+  "Larimer Lounge",
+  "Marquis Theatre",
+  "Mission Ballroom",
+  "Red Rocks Amphitheatre",
+  "Summits",
+  "Globe Hall",
+  "Fiddler’s Green Amphitheatre",
+  "Hi-Dive",
+  "Levitt Pavilion Denver",
+  "Bellco Theatre",
+  "Ortiental Theater",
+  "Gothic Theatre",
+  "Mishawaka Amphitheatre",
+  "Boettcher Hall",
+  "Dillon Amphitheatre",
+  "Fillmore Auditorium",
+  "Paramount Theatre",
+  "Pikes Peak Center",
+  "The Black Buzzard",
+  "Washingtons",
+  "Denver Coliseum",
+  "Lulu’s Downstairs",
+  "Vilar Performing Arts Center",
+  "Denver Center for the Performing Arts",
+  "Chautauqua Auditorium",
+  "Ophelia’s Electric Soapbox",
+  "Arvada Center Outdoor Amphitheatre",
+  "Empower Field at Mile High",
+  "DICK’S Sporting Goods Park",
+  "Philip S. Miller Park",
+  "Black Sheep",
+  "Fox Theatre and Cafe",
+  "Boulder Theatre",
+  "Aggie Theatre",
+  "Moxi Theater",
+  "Avalon Theatre",
+  "Belly Up Aspen",
+  "Fiddler’s Green Amphitheatre",
+  "Loaded",
+  "Armory Event Center",
+  "Telluride Town Park",
+  "1st Bank Center",
+  "Moon Room at Summit",
+  "Budweiser Events Center",
+  "Renewal Festival Grounds",
+];
+
 var prevTitle = document.createElement("h4");
-var localS = []
+var localS = [];
 
 let apiKey = "JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3";
 
@@ -66,7 +121,7 @@ function submitFormHandler(e) {
 }
 
 function convert2(input) {
-  return moment().format('L');  
+  return moment(input).format("L");
 }
 
 function searchVenue(userVenue) {
@@ -136,7 +191,9 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
     listEvent.classList.add("cssListItem");
     let dataLink = document.createElement("a");
     dataLink.setAttribute("href", `./event.html?eventId=${eventId}`);
-    dataLink.textContent = `${eventName} playing on ${convert2(eventDate)} /Genre: ${Genre}`;
+    dataLink.textContent = `${eventName} playing on ${convert2(
+      eventDate
+    )} /Genre: ${Genre}`;
 
     listEvent.append(dataLink);
     listappender.append(listEvent);
@@ -222,44 +279,73 @@ function showStartPageEvents(eventArray) {
   }
 }
 
+autocomplete.addEventListener("input", function () {
+  let results = [];
+  const venueInput = this.value;
+  venueResults.innerHTML = "";
+  if (venueInput.length > 0) {
+    results = getResults(venueInput);
+    venueResults.style.display = "block";
+    for (i = 0; i < results.length; i++) {
+      venueResults.innerHTML += "<li>" + results[i] + "</li>";
+    }
+  }
+});
+
+function getResults(input) {
+  const results = [];
+  for (i = 0; i < venueArray.length; i++) {
+    if (
+      input.toLowerCase() === venueArray[i].slice(0, input.length).toLowerCase()
+    ) {
+      results.push(venueArray[i]);
+    }
+  }
+  return results;
+}
+
+venueResults.addEventListener("click", function (event) {
+  const setValue = event.target.innerText;
+  autocomplete.value = setValue;
+  this.innerHTML = "";
+  results.style.display = "none";
+});
+
 function saveToLocalStorage(venueName) {
   // console.log(Parker ${venueName});
   console.log(`Venue Name:${venueName}`);
   localStorage.setItem("VenueName", venueName);
   var previous = localStorage.getItem("VenueName");
   console.log(`This is previous ${previous}`);
- localS.push(previous);
- console.log(localS);
- localStorage.setItem("VenueNames", JSON.stringify(localS));
- // console.log(localS);
- displayVenue();
+  localS.push(previous);
+  console.log(localS);
+  localStorage.setItem("VenueNames", JSON.stringify(localS));
+  // console.log(localS);
+  displayVenue();
 }
 //Display and append the user's input to the previous searches
 function displayVenue() {
- // prevButton.textContent = previous;
- var venuesId = localStorage.getItem("VenueName");
- console.log(venuesId);
- console.log("Neww Array?");
- var prevButton = document.createElement("button");
- prevButton.textContent = venuesId;
- prevButton.classList.add("prevBtn");
- console.log(prevButton);
- prevS.append(prevButton);
+  // prevButton.textContent = previous;
+  var venuesId = localStorage.getItem("VenueName");
+  console.log(venuesId);
+  console.log("Neww Array?");
+  var prevButton = document.createElement("button");
+  prevButton.textContent = venuesId;
+  prevButton.classList.add("prevBtn");
+  console.log(prevButton);
+  prevS.append(prevButton);
 }
+
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
- var venuesIds = localStorage.getItem("VenueNames");
- console.log(venuesIds);
- venuesIds = JSON.parse(venuesIds);
- console.log(venuesIds);
- console.log("Neww Array?");
- for (i = 0; i < venuesIds.length; i++){
-   var prevButton = document.createElement("button");
-   prevButton.textContent = venuesIds[i];
-   prevButton.classList.add("prevBtn");
-   console.log(prevButton);
-   prevS.append(prevButton);
- }
+  var venuesIds = localStorage.getItem("VenueNames");
+  venuesIds = JSON.parse(venuesIds);
+  for (i = 0; i < venuesIds.length; i++) {
+    var prevButton = document.createElement("button");
+    prevButton.textContent = venuesIds[i];
+    prevButton.classList.add("prevBtn");
+    prevS.append(prevButton);
+  }
 }
 
 displayPreviousSearchedButtons();
