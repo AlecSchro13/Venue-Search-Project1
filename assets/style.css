@@ -22,6 +22,7 @@ body {
   background-image: url("./images/background.jpg");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
@@ -193,9 +194,36 @@ a:-webkit-any-link {
 .prevS {
   height: 200px;
   border: 4px solid black;
-  overflow: scroll;
+  overflow: auto;
   text-align: center;
   margin-bottom: 10px;
+}
+
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+  border-radius: 100px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+  border-radius: 100px;
 }
 
 .popV {
@@ -231,7 +259,8 @@ a:-webkit-any-link {
 }
 
 .btnFlex {
-  padding-right: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 #goBack {
@@ -285,11 +314,7 @@ a:-webkit-any-link {
   text-decoration: none;
   color: black;
   font-weight: 400;
-  font-size: 20pxpx;
-}
-
-.nearUser {
-  border: 4px solid black;
+  font-size: 18px;
 }
 
 .popV {
