@@ -1,4 +1,4 @@
-const mapBox = document.querySelector(".topBox");
+const link = document.querySelector(".linkSec")
 let usersLocation;
 let venueLocation;
 let userLat;
@@ -76,18 +76,23 @@ function fetchEventInfo(eventId) {
 
       image.src = imgUrl;
       img.append(image);
+   
+      let postCode = data._embedded.venues[0].postalCode
+      let completeAddress = `${address}+${city}+${state}+${postCode}`
+      let buttonLink = document.createElement("button")
+      buttonLink.classList.add("buy-tickets")
+      let DirectionLink = document.createElement("a")
+      DirectionLink.textContent = "Click Here for Directions!"
+      DirectionLink.setAttribute("href", `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`,)
+      DirectionLink.setAttribute('target', '_blank')
+      buttonLink.append(DirectionLink)
+      link.append(buttonLink);
 
-      let postCode = data._embedded.venues[0].postalCode;
-      let completeAddress = `${address}+${city}+${state}+${postCode}`;
-
-      let DirectionLink = document.createElement("a");
-      DirectionLink.textContent = "Click Here for Directions!";
-      DirectionLink.setAttribute(
-        "href",
-        `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`
-      );
-      DirectionLink.setAttribute("target", "_blank");
-      mapBox.append(DirectionLink);
+      const ticketUrl = document.getElementById("ticketUrl")
+      let url = data.url
+      
+      ticketUrl.setAttribute("href", `${url}`)
+      ticketUrl.setAttribute('target', '_blank')
 
       venueLocation = completeAddress;
       initMap(parseFloat(userLat), parseFloat(userLon));
@@ -112,8 +117,6 @@ for (let index = 0; index < img.length; index++) {
 //     then
 //   }
 // }
-
-
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
 
