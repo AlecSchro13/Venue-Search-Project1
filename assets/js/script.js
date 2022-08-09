@@ -5,7 +5,6 @@ const venueInputEl = document.querySelector(".venueInput");
 const genreSelectEl = document.querySelector("#genreOptions");
 const venueUpcomingEvents = document.querySelector(".upcomingevents");
 
-
 const popularbutton = document.querySelector(".popBtns");
 //const statusEl = document.querySelector("#status")
 var prevS = document.querySelector(".prevS");
@@ -50,12 +49,14 @@ function submitFormHandler(e) {
     searchVenue(userVenue);
   } else {
     venueUpcomingEvents.innerHTML = "";
-    let emptyValue = document.createElement("h2")
-    emptyValue.textContent = "Please Type in a Venue to get upcoming events..."
-    let example = document.createElement("h4")
-    example.textContent = "or Choose a Genre option to view events on a Genre!😅"
-    let example2 = document.createElement("h4")
-    example2.textContent = "You can also select one of our Popular venues if you're unfamilliar with the area!"
+    let emptyValue = document.createElement("h2");
+    emptyValue.textContent = "Please Type in a Venue to get upcoming events...";
+    let example = document.createElement("h4");
+    example.textContent =
+      "or Choose a Genre option to view events on a Genre!😅";
+    let example2 = document.createElement("h4");
+    example2.textContent =
+      "You can also select one of our Popular venues if you're unfamilliar with the area!";
     venueUpcomingEvents.append(emptyValue, example, example2);
   }
 }
@@ -76,10 +77,11 @@ function searchVenue(userVenue) {
     })
     .catch(() => {
       venueUpcomingEvents.innerHTML = "";
-      let error = document.createElement("h2")
-      error.textContent = "oops.. Something went wrong"
-      let example = document.createElement("h4")
-      example.textContent = "Looks like we found an error.. Please try again!😅"
+      let error = document.createElement("h2");
+      error.textContent = "oops.. Something went wrong";
+      let example = document.createElement("h4");
+      example.textContent =
+        "Looks like we found an error.. Please try again!😅";
       venueUpcomingEvents.append(error, example);
     });
 }
@@ -98,10 +100,11 @@ function upcomingEvents(venueId, venueName) {
     })
     .catch(() => {
       venueUpcomingEvents.innerHTML = "";
-      let noEvents = document.createElement("h2")
-      noEvents.textContent = "No events found for this venue"
-      let example = document.createElement("h4")
-      example.textContent = "try something like Summit or Fillmore Auditorium 😅"
+      let noEvents = document.createElement("h2");
+      noEvents.textContent = "No events found for this venue";
+      let example = document.createElement("h4");
+      example.textContent =
+        "try something like Summit or Fillmore Auditorium 😅";
       venueUpcomingEvents.append(noEvents, example);
     });
 }
@@ -149,6 +152,7 @@ function getGenreEvents(genreChoiceValue) {
 
 function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
   let titleEl = document.createElement("h4");
+  titleEl.classList.add("showing-events");
   titleEl.textContent = `Showing Events for: ${genreChoice} Genre`;
   let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
@@ -190,11 +194,15 @@ function showStartPageEvents(eventArray) {
   var userNear = document.querySelector(".nearUser");
   userNear.textContent = "";
   let titleEl = document.createElement("h4");
+  titleEl.classList.add("upcoming");
   titleEl.textContent = `Upcoming Events near Denver, CO`;
+  let instructions = document.createElement("p");
+  instructions.classList.add("upcoming")
+  instructions.textContent = "(click on an event to get event details!)";
   let listappender = document.createElement("ol");
-  venueUpcomingEvents.append(titleEl, listappender);
+  venueUpcomingEvents.append(titleEl, instructions, listappender);
   for (let index = 0; index < eventArray.length; index++) {
-    const eventId = eventArray[index].id
+    const eventId = eventArray[index].id;
     const nameEvent = eventArray[index].name;
     const dateEvent = eventArray[index].dates.start.localDate;
 
@@ -209,17 +217,16 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
-  var previous = localStorage.getItem("VenueNames"); 
-
-  localS.push(venueName);
+  localStorage.setItem("VenueName", venueName);
+  var previous = localStorage.getItem("VenueName");
+  
+  localS.push(previous);
   localStorage.setItem("VenueNames", JSON.stringify(localS));
-
   displayPreviousSearchedButtons();
 }
 
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
-
   var venuesIds = JSON.parse(localStorage.getItem("VenueNames"));
   prevS.innerHTML = "";
 
@@ -229,8 +236,6 @@ function displayPreviousSearchedButtons() {
     prevButton.classList.add("prevBtn");
     prevS.append(prevButton);
   }
-
 }
-
 
 displayPreviousSearchedButtons();

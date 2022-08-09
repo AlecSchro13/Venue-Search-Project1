@@ -6,16 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./assets/style.css" />
   <title>Venue Search</title>
 </head>
 
 <body>
-  <div class="jumbotron jumbotron-fluid">
-    <h1 class="display-4">Dreamworld</h1>
-    <p class="lead">Venue and Events</p>
+  <div class="site-title">
+    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i>Dreamworld<i class="fa fa-music" aria-hidden="true"></i></h1>
+    <h2 class="sub-title">Venue and Events</h2>
   </div>
   <div class="container">
       <div class="navBar">
@@ -25,8 +24,8 @@
         </form>
 
         <form class="form2">
-          <button class="btn btn-primary btn-lg">Submit Genre</button>
-          <select class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+          <button class="submit-genre">Submit Genre</button>
+          <select class="drop-menu" type="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" id="genreOptions">Genre
             <option value="" disabled selected>select your Genre</option>
             <option value="Rock">Rock</option>
@@ -44,6 +43,7 @@
             <!-- <div class="mainB container"> -->
           <div class="col-7 nearUser upcomingevents">
               <h4 class="upcoming">Events Near Current User</h4>
+              <h2>(click on an event for more details!)</h2>
           </div>
           <div class="col-5">
             <div class="otherBox">
@@ -71,15 +71,10 @@
                     </button>
                   </div>
                 </div>
-                
             </div>
-          
-            
           </div>
           
         </div>
-        
-
       </div>
     </div>
   </div>

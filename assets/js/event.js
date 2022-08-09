@@ -1,4 +1,3 @@
-const navText = document.querySelector(".jsNav")
 const mapBox = document.querySelector(".topBox")
 let usersLocation;
 let venueLocation;
@@ -28,24 +27,23 @@ function geoFindMe() {
 
 geoFindMe ();
 
-function getEventId () {
-    var htmlInfo = document.location.search;
-    console.log(htmlInfo)
-    var eventId = htmlInfo.split('=')[1];
-    console.log(eventId);
+function getEventId() {
+  var htmlInfo = document.location.search;
+  console.log(htmlInfo);
+  var eventId = htmlInfo.split("=")[1];
+  console.log(eventId);
 
-    if (eventId) {
-        navText.innerHTML = "";
-        fetchEventInfo(eventId);
-      } else {
-        document.location.replace('./index.html');
-    }
-};
+  if (eventId) {
+    fetchEventInfo(eventId);
+  } else {
+    document.location.replace("./index.html");
+  }
+}
 
 function fetchEventInfo(eventId) {
-    let apiUrl = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3`
+  let apiUrl = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=JjOAUr2y2Gxq070TMAOGO7RzAV4JBKi3`;
 
-    fetch(apiUrl)
+  fetch(apiUrl)
     .then(function (response) {
       return response.json();
     })
@@ -86,16 +84,16 @@ function fetchEventInfo(eventId) {
 
       let DirectionLink = document.createElement("a")
       DirectionLink.textContent = "Click Here for Directions!"
-      DirectionLink.setAttribute("href", `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`)
+      DirectionLink.setAttribute("href", `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`,)
+      DirectionLink.setAttribute('target', '_blank')
       mapBox.append(DirectionLink);
 
       venueLocation = completeAddress
       initMap(parseFloat(userLat), parseFloat(userLon));
       calcRoute();
-
     })
     .catch((e) => {
-        console.log(e)
+      console.log(e);
     });
 }
 
@@ -128,4 +126,3 @@ function calcRoute() {
     }
   }); 
 }
-
