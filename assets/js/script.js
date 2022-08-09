@@ -73,15 +73,7 @@ function searchVenue(userVenue) {
       const venueName = data._embedded.venues[0].name;
       const venueId = data._embedded.venues[0].id;
 
-      //this is Calling a NEW function TBD
       saveToLocalStorage(venueName);
-
-      //these variables will be used for google maps... TBD
-      const lat = data._embedded.venues[0].location.latitude;
-      const lon = data._embedded.venues[0].location.longitude;
-      const coordinates = `${lat},${lon}`;
-      console.log(coordinates);
-
       upcomingEvents(venueId, venueName);
     })
     .catch(() => {
@@ -117,7 +109,6 @@ function upcomingEvents(venueId, venueName) {
       venueUpcomingEvents.append(noEvents, example);
     });
 }
-
 function displayUpcomingEvents(futureEventsArray, venueName) {
   //clearing start page events to begin with on HTML
   venueUpcomingEvents.innerHTML = "";
@@ -130,7 +121,6 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
 
   for (let index = 0; index < futureEventsArray.length; index++) {
     const eventId = futureEventsArray[index].id;
-    console.log(eventId);
     const eventName = futureEventsArray[index].name;
     const eventDate = futureEventsArray[index].dates.start.localDate;
     const Genre = futureEventsArray[index].classifications[0].genre.name;
@@ -169,7 +159,6 @@ function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
   //starting Loop here
   for (let index = 0; index < genreEventArray.length; index++) {
     const eventId = genreEventArray[index].id;
-    console.log(eventId);
     const eventName = genreEventArray[index].name;
     const eventDate = genreEventArray[index].dates.start.localDate;
 
@@ -206,8 +195,11 @@ function showStartPageEvents(eventArray) {
   let titleEl = document.createElement("h4");
   titleEl.classList.add("upcoming");
   titleEl.textContent = `Upcoming Events near Denver, CO`;
+  let instructions = document.createElement("p");
+  instructions.classList.add("upcoming");
+  instructions.textContent = "(click on an event to get event details!)";
   let listappender = document.createElement("ol");
-  venueUpcomingEvents.append(titleEl, listappender);
+  venueUpcomingEvents.append(titleEl, instructions, listappender);
   for (let index = 0; index < eventArray.length; index++) {
     const eventId = eventArray[index].id;
     const nameEvent = eventArray[index].name;
@@ -224,46 +216,23 @@ function showStartPageEvents(eventArray) {
 }
 
 function saveToLocalStorage(venueName) {
-  // console.log(`Parker ${venueName}`);
-  console.log(`Venue Name:${venueName}`);
   localStorage.setItem("VenueName", venueName);
   var previous = localStorage.getItem("VenueName");
 
-  console.log(`This is previous ${previous}`);
   localS.push(previous);
-  console.log(localS);
   localStorage.setItem("VenueNames", JSON.stringify(localS));
-  // console.log(localS);
-  displayVenue();
-}
-
-//Display and append the user's input to the previous searches
-function displayVenue() {
-  // prevButton.textContent = previous;
-  var venuesId = localStorage.getItem("VenueName");
-  console.log(venuesId);
-  console.log("Neww Array?");
-
-  var prevButton = document.createElement("button");
-  prevButton.textContent = venuesId;
-  prevButton.classList.add("prevBtn");
-  console.log(prevButton);
-  prevS.append(prevButton);
+  displayPreviousSearchedButtons();
 }
 
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
-  var venuesIds = localStorage.getItem("VenueNames");
-  console.log(venuesIds);
-  venuesIds = JSON.parse(venuesIds);
-  console.log(venuesIds);
-  console.log("Neww Array?");
+  var venuesIds = JSON.parse(localStorage.getItem("VenueNames"));
+  prevS.innerHTML = "";
 
   for (i = 0; i < venuesIds.length; i++) {
     var prevButton = document.createElement("button");
     prevButton.textContent = venuesIds[i];
     prevButton.classList.add("prevBtn");
-    console.log(prevButton);
     prevS.append(prevButton);
   }
 }

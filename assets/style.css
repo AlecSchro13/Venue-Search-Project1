@@ -191,6 +191,14 @@ a:-webkit-any-link {
   font-size: x-large;
 }
 
+.nearUser {
+  border: 4px solid black;
+}
+
+.prevBtn {
+  margin: 10px;
+}
+
 .prevS {
   height: 200px;
   border: 4px solid black;
@@ -381,6 +389,23 @@ body::-webkit-scrollbar-thumb {
 
 .mainContent {
   height: 500px;
+}
+
+img {
+  width: 50%;
+  border: 5px solid black;
+}
+
+/* // Small devices */
+@media (min-width: 576px) {
+}
+
+/* // Medium devices */
+@media (min-width: 768px) {
+}
+
+/* // Large devices */
+@media (min-width: 992px) {
 }
 
 /* @media (min-width: 992px) {
