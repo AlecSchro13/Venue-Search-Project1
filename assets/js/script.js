@@ -35,7 +35,8 @@ genreForm.addEventListener("submit", genreFormHandler);
 function genreFormHandler(e) {
   e.preventDefault();
   //selects the option chosen from dropdown menue
-  let genreChoiceValue = genreSelectEl.options[genreSelectEl.selectedIndex].value;
+  let genreChoiceValue =
+    genreSelectEl.options[genreSelectEl.selectedIndex].value;
 
   if (genreChoiceValue) {
     getGenreEvents(genreChoiceValue);
@@ -75,7 +76,7 @@ function searchVenue(userVenue) {
       const venueName = data._embedded.venues[0].name;
       const venueId = data._embedded.venues[0].id;
 
-      saveToLocalStorage(venueName); 
+      saveToLocalStorage(venueName);
       upcomingEvents(venueId, venueName);
     })
     .catch(() => {
@@ -111,7 +112,6 @@ function upcomingEvents(venueId, venueName) {
       venueUpcomingEvents.append(noEvents, example);
     });
 }
-
 function displayUpcomingEvents(futureEventsArray, venueName) {
   //clearing start page events to begin with on HTML
   venueUpcomingEvents.innerHTML = "";
@@ -121,7 +121,6 @@ function displayUpcomingEvents(futureEventsArray, venueName) {
   //creating <ol> for <li> tags to be appended to
   let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, listappender);
- 
 
   for (let index = 0; index < futureEventsArray.length; index++) {
     const eventId = futureEventsArray[index].id;
@@ -162,7 +161,7 @@ function displayGenreUpcomingEvents(genreEventArray, genreChoice) {
 
   //starting Loop here
   for (let index = 0; index < genreEventArray.length; index++) {
-    const eventId = genreEventArray[index].id
+    const eventId = genreEventArray[index].id;
     const eventName = genreEventArray[index].name;
     const eventDate = genreEventArray[index].dates.start.localDate;
 
@@ -200,7 +199,7 @@ function showStartPageEvents(eventArray) {
   titleEl.classList.add("upcoming");
   titleEl.textContent = `Upcoming Events near Denver, CO`;
   let instructions = document.createElement("p");
-  instructions.classList.add("upcoming")
+  instructions.classList.add("upcoming");
   instructions.textContent = "(click on an event to get event details!)";
   let listappender = document.createElement("ol");
   venueUpcomingEvents.append(titleEl, instructions, listappender);
@@ -222,7 +221,7 @@ function showStartPageEvents(eventArray) {
 function saveToLocalStorage(venueName) {
   localStorage.setItem("VenueName", venueName);
   var previous = localStorage.getItem("VenueName");
-  
+
   localS.push(previous);
   localStorage.setItem("VenueNames", JSON.stringify(localS));
   displayPreviousSearchedButtons();

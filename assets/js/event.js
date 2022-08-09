@@ -1,4 +1,4 @@
-const mapBox = document.querySelector(".topBox")
+const mapBox = document.querySelector(".topBox");
 let usersLocation;
 let venueLocation;
 let userLat;
@@ -6,14 +6,16 @@ let userLon;
 
 function geoFindMe() {
   function success(position) {
-    
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    console.log(`${latitude}, ${longitude}`)
+    console.log(`${latitude}, ${longitude}`);
     userLat = latitude;
     userLon = longitude;
-    usersLocation = new google.maps.LatLng(parseFloat(latitude), parseFloat(longitude))
-    getEventId ();
+    usersLocation = new google.maps.LatLng(
+      parseFloat(latitude),
+      parseFloat(longitude)
+    );
+    getEventId();
   }
 
   function error() {
@@ -25,7 +27,7 @@ function geoFindMe() {
   }
 }
 
-geoFindMe ();
+geoFindMe();
 
 function getEventId() {
   var htmlInfo = document.location.search;
@@ -48,7 +50,6 @@ function fetchEventInfo(eventId) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       let eventName = data.name;
       document.getElementById("eventName").textContent = eventName;
       let venueName = data._embedded.venues[0].name;
@@ -58,10 +59,9 @@ function fetchEventInfo(eventId) {
       let genre = data.classifications[0].genre.name;
       document.getElementById("genre").textContent = genre;
       let eventDate = data.dates.start.localDate;
-      document.getElementById("eventDate").textContent = eventDate
+      document.getElementById("eventDate").textContent = eventDate;
       let startTime = data.dates.start.localTime;
-      //console.log(data.dates.start.localTime);
-      document.getElementById("startTime").textContent = startTime
+      document.getElementById("startTime").textContent = startTime;
       let city = data._embedded.venues[0].city.name;
       document.getElementById("city").textContent = city;
       let state = data._embedded.venues[0].state.stateCode;
@@ -75,17 +75,20 @@ function fetchEventInfo(eventId) {
 
       image.src = imgUrl;
       img.append(image);
-   
-      let postCode = data._embedded.venues[0].postalCode
-      let completeAddress = `${address}+${city}+${state}+${postCode}`
 
-      let DirectionLink = document.createElement("a")
-      DirectionLink.textContent = "Click Here for Directions!"
-      DirectionLink.setAttribute("href", `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`,)
-      DirectionLink.setAttribute('target', '_blank')
+      let postCode = data._embedded.venues[0].postalCode;
+      let completeAddress = `${address}+${city}+${state}+${postCode}`;
+
+      let DirectionLink = document.createElement("a");
+      DirectionLink.textContent = "Click Here for Directions!";
+      DirectionLink.setAttribute(
+        "href",
+        `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`
+      );
+      DirectionLink.setAttribute("target", "_blank");
       mapBox.append(DirectionLink);
 
-      venueLocation = completeAddress
+      venueLocation = completeAddress;
       initMap(parseFloat(userLat), parseFloat(userLon));
       calcRoute();
     })
@@ -96,7 +99,7 @@ function fetchEventInfo(eventId) {
 
 // for (let index = 0; index < img.length; index++) {
 //   if (url === 16_9) {
-//     then 
+//     then
 //   }
 // }
 
@@ -106,7 +109,6 @@ var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
 
 function initMap(lat, lon) {
-
   var userLocation = new google.maps.LatLng(lat, lon);
   var mapOptions = {
     zoom: 17,
@@ -117,17 +119,16 @@ function initMap(lat, lon) {
 }
 
 function calcRoute() {
-
-  var start = usersLocation
+  var start = usersLocation;
   var end = venueLocation;
   var request = {
     origin: start,
-    destination:end,
+    destination: end,
     travelMode: "DRIVING",
   };
   directionsService.route(request, function (result, status) {
     if (status == "OK") {
       directionsRenderer.setDirections(result);
     }
-  }); 
+  });
 }

@@ -14,6 +14,7 @@
     />
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Venue Search</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/icon.ico" />
   </head>
   <body>
     <header>
@@ -39,20 +40,21 @@
         </h1>
       </div>
     </header>
-    
 
     <button id="goBack"><a href="./index.html">Go Back</a></button>
     <div class="eventBox">
       <div class="eventDisplay">
-
-        <h3 id="eventName"> Loading <i class="fa-regular fa-spinner"></i></h3>
-        <div id="imgsrc"> </div>
+        <h3 id="eventName">Loading <i class="fa-regular fa-spinner"></i></h3>
+        <div id="imgsrc"></div>
       </div>
       <div class="mainC" style="height: max-content; padding: 20px">
         <div class="topBox">
-        
           <h4>Venue Name: <span id="venueName"></span></h4>
-          <h4>Address of Venue: <span id="address"></span> <span id="city"></span>, <span id="stateCode"></span> <span id="zipCode"></span></h4>
+          <h4>
+            Address of Venue: <span id="address"></span>
+            <span id="city"></span>, <span id="stateCode"></span>
+            <span id="zipCode"></span>
+          </h4>
           <h4>Genre: <span id="genre"></span></h4>
           <h4>Date: <span id="eventDate"></span></h4>
           <h4>Time Event Starts: <span id="startTime"></span></h4>
@@ -61,7 +63,9 @@
         <div class="bottomBox">
           <button class="buy-tickets">
             <a href=""
-              ><i class="fa fa-ticket" id="ticket-icon" aria-hidden="true"></i>BUY TICKETS HERE</a>
+              ><i class="fa fa-ticket" id="ticket-icon" aria-hidden="true"></i
+              >BUY TICKETS HERE</a
+            >
           </button>
         </div>
       </div>
