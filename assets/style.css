@@ -162,7 +162,6 @@ a:-webkit-any-link {
   text-align: center;
 }
 
-
 #goBack,
 .buy-tickets,
 .drop-menu,
@@ -179,7 +178,7 @@ a:-webkit-any-link {
   background-color: black;
   border-color: white;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 #ticket-icon {
@@ -190,6 +189,7 @@ a:-webkit-any-link {
   line-height: 2.5rem;
   font-size: x-large;
 }
+
 .nearUser {
     border: 4px solid black;
 }

@@ -50,37 +50,32 @@ function fetchEventInfo(eventId) {
     .then((data) => {
       console.log(data);
       let eventName = data.name;
-      //console.log(data.name);
-        document.getElementById("eventName").textContent = eventName;
+      document.getElementById("eventName").textContent = eventName;
       let venueName = data._embedded.venues[0].name;
-      //console.log(data._embedded.venues[0].name);
-        document.getElementById("venueName").textContent = venueName;
+      document.getElementById("venueName").textContent = venueName;
       let address = data._embedded.venues[0].address.line1;
-        //console.log(data._embedded.venues[0].address.line1);
-        document.getElementById("address").textContent = address;
+      document.getElementById("address").textContent = address;
       let genre = data.classifications[0].genre.name;
-      //console.log(data.classifications[0].genre.name);
-        document.getElementById("genre").textContent = genre;
+      document.getElementById("genre").textContent = genre;
       let eventDate = data.dates.start.localDate;
-      //console.log(data.dates.start.localDate);
-        document.getElementById("eventDate").textContent = eventDate
+      document.getElementById("eventDate").textContent = eventDate
       let startTime = data.dates.start.localTime;
       //console.log(data.dates.start.localTime);
-        document.getElementById("startTime").textContent = startTime
+      document.getElementById("startTime").textContent = startTime
+      let city = data._embedded.venues[0].city.name;
+      document.getElementById("city").textContent = city;
+      let state = data._embedded.venues[0].state.stateCode;
+      document.getElementById("stateCode").textContent = state;
+      let imgUrl = data.images[1].url;
 
-      let imgUrl = data.images[1].url
-      console.log(imgUrl)
-      const img = document.getElementById("imgsrc")
-      let image = document.createElement("img")
+      const img = document.getElementById("imgsrc");
+      let image = document.createElement("img");
 
-      image.src = imgUrl
-      img.append(image)
-
-    
-      let city = data._embedded.venues[0].city
-      let stateCode = data._embedded.venues[0].state.stateCode
+      image.src = imgUrl;
+      img.append(image);
+   
       let postCode = data._embedded.venues[0].postalCode
-      let completeAddress = `${address}+${city}+${stateCode}+${postCode}`
+      let completeAddress = `${address}+${city}+${state}+${postCode}`
 
       let DirectionLink = document.createElement("a")
       DirectionLink.textContent = "Click Here for Directions!"
