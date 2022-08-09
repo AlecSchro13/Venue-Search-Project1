@@ -1,14 +1,21 @@
-const mapBox = document.querySelector(".topBox");
+const link = document.querySelector(".linkSec")
 let usersLocation;
 let venueLocation;
 let userLat;
 let userLon;
 
+function convert(input) {
+  return moment(input, 'HH:mm:ss').format('h:mm A');
+}
+
+function convert2(input) {
+  return moment().format('LL');  
+}
+
 function geoFindMe() {
   function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    console.log(`${latitude}, ${longitude}`);
     userLat = latitude;
     userLon = longitude;
     usersLocation = new google.maps.LatLng(
@@ -31,9 +38,7 @@ geoFindMe();
 
 function getEventId() {
   var htmlInfo = document.location.search;
-  console.log(htmlInfo);
   var eventId = htmlInfo.split("=")[1];
-  console.log(eventId);
 
   if (eventId) {
     fetchEventInfo(eventId);
@@ -60,10 +65,9 @@ function fetchEventInfo(eventId) {
       let genre = data.classifications[0].genre.name;
       document.getElementById("genre").textContent = genre;
       let eventDate = data.dates.start.localDate;
-      document.getElementById("eventDate").textContent = eventDate;
+      document.getElementById("eventDate").textContent = convert2(eventDate);
       let startTime = data.dates.start.localTime;
-      document.getElementById("startTime").textContent = startTime
-      document.getElementById("startTime").textContent = startTime;
+      document.getElementById("startTime").textContent = convert(startTime)
       let city = data._embedded.venues[0].city.name;
       document.getElementById("city").textContent = city;
       let state = data._embedded.venues[0].state.stateCode;
@@ -90,18 +94,23 @@ function fetchEventInfo(eventId) {
 
       image.src = imgUrl;
       img.append(image);
+   
+      let postCode = data._embedded.venues[0].postalCode
+      let completeAddress = `${address}+${city}+${state}+${postCode}`
+      let buttonLink = document.createElement("button")
+      buttonLink.classList.add("buy-tickets")
+      let DirectionLink = document.createElement("a")
+      DirectionLink.textContent = "Click Here for Directions!"
+      DirectionLink.setAttribute("href", `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`,)
+      DirectionLink.setAttribute('target', '_blank')
+      buttonLink.append(DirectionLink)
+      link.append(buttonLink);
 
-      let postCode = data._embedded.venues[0].postalCode;
-      let completeAddress = `${address}+${city}+${state}+${postCode}`;
-
-      let DirectionLink = document.createElement("a");
-      DirectionLink.textContent = "Click Here for Directions!";
-      DirectionLink.setAttribute(
-        "href",
-        `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`
-      );
-      DirectionLink.setAttribute("target", "_blank");
-      mapBox.append(DirectionLink);
+      const ticketUrl = document.getElementById("ticketUrl")
+      let url = data.url
+      
+      ticketUrl.setAttribute("href", `${url}`)
+      ticketUrl.setAttribute('target', '_blank')
 
       venueLocation = completeAddress;
       initMap(parseFloat(userLat), parseFloat(userLon));
@@ -111,11 +120,6 @@ function fetchEventInfo(eventId) {
       console.log(e);
     });
 }
-
-
-
-
-
 
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
