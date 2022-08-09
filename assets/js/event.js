@@ -50,6 +50,7 @@ function fetchEventInfo(eventId) {
       return response.json();
     })
     .then((data) => {
+      console.log(data)
       let eventName = data.name;
       document.getElementById("eventName").textContent = eventName;
       let venueName = data._embedded.venues[0].name;
@@ -69,8 +70,21 @@ function fetchEventInfo(eventId) {
       document.getElementById("stateCode").textContent = state;
       let zipCode = data._embedded.venues[0].postalCode;
       document.getElementById("zipCode").textContent = zipCode;
-      let imgUrl = data.images[1].url;
-
+      let imgUrl;
+    
+      
+      for (let index = 0; index < data.images.length; index++) {
+        let eventImage = data.images[index].height;
+        
+        if (eventImage > "600") {
+          imgUrl = data.images[index].url;
+        }
+        if (eventImage > "1200") {
+          imgUrl = data.images[index].url;
+          break;
+        }
+        
+      }
       const img = document.getElementById("imgsrc");
       let image = document.createElement("img");
 
@@ -98,13 +112,7 @@ function fetchEventInfo(eventId) {
     });
 }
 
-let eventImage = data.images;
-for (let index = 0; index < eventImage.length; index++) {
-  let wrongImage = ratio === 16_9
-  if (eventImage = wrongImage) {
-     
-  }
-}
+
 
 
 
