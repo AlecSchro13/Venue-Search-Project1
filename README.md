@@ -20,6 +20,17 @@ Motivation: The motivation for this application is to help tourists and locals e
 
 https://user-images.githubusercontent.com/105956930/183723316-e655dc36-449d-47d0-a88b-254478dadbe4.mp4
 
+![20220809_131759](https://user-images.githubusercontent.com/105956930/183767716-2ec4dbf6-10b0-4bc3-85c4-f29557520424.jpg)
+
+![20220809_131817](https://user-images.githubusercontent.com/105956930/183767767-fdfe5110-699e-4fbb-9f68-e20e2802fe21.jpg)
+
+![20220809_131658](https://user-images.githubusercontent.com/105956930/183767829-24c24909-57da-45c0-8d1c-dcc6aaad62e9.jpg)
+
+![20220809_131705](https://user-images.githubusercontent.com/105956930/183767906-f08ade9d-a044-4948-b266-7dc620f622be.jpg)
+
+
+
+
 
 
 
