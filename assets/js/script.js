@@ -248,7 +248,6 @@ function displayVenue() {
 }
 //Display the previous searches (venues) to the page
 function displayPreviousSearchedButtons() {
-<<<<<<< HEAD
  var venuesIds = localStorage.getItem("VenueNames");
  console.log(venuesIds);
  venuesIds = JSON.parse(venuesIds);
@@ -261,17 +260,6 @@ function displayPreviousSearchedButtons() {
    console.log(prevButton);
    prevS.append(prevButton);
  }
-=======
-  var venuesIds = JSON.parse(localStorage.getItem("VenueNames")) || 0;
-  prevS.innerHTML = "";
-
-  for (i = 0; i < venuesIds.length; i++) {
-    var prevButton = document.createElement("button");
-    prevButton.textContent = venuesIds[i];
-    prevButton.classList.add("prevBtn");
-    prevS.append(prevButton);
-  }
->>>>>>> 6ba141bcac6accb0634a685d01bfa7c66abc851b
 }
 
 displayPreviousSearchedButtons();

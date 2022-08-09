@@ -121,17 +121,6 @@ function fetchEventInfo(eventId) {
     });
 }
 
-<<<<<<< HEAD
-// for (let index = 0; index < img.length; index++) {
-//   if (url === 16_9) {
-//     then
-//   }
-// }
-
-
-
-=======
->>>>>>> 6ba141bcac6accb0634a685d01bfa7c66abc851b
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
 

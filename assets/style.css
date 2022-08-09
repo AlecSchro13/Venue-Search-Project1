@@ -336,13 +336,8 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   color: black;
   font-weight: 400;
-<<<<<<< HEAD
   font-size: 18px;
   margin-left: -34px;
-=======
-  font-size: 20px;
-  line-height: 2;
->>>>>>> 6ba141bcac6accb0634a685d01bfa7c66abc851b
 }
 
 .popV {
@@ -424,6 +419,10 @@ img {
   }
   .container {
     text-align: center;
+  }
+  .bottomBox a {
+    margin-right: 15px;
+    padding-left: 10px;
   }
 }
 
