@@ -66,6 +66,8 @@ function fetchEventInfo(eventId) {
       document.getElementById("city").textContent = city;
       let state = data._embedded.venues[0].state.stateCode;
       document.getElementById("stateCode").textContent = state;
+      let zipCode = data._embedded.venues[0].postalCode;
+      document.getElementById("zipCode").textContent = zipCode;
       let imgUrl = data.images[1].url;
 
       const img = document.getElementById("imgsrc");
@@ -91,6 +93,14 @@ function fetchEventInfo(eventId) {
       console.log(e);
     });
 }
+
+// for (let index = 0; index < img.length; index++) {
+//   if (url === 16_9) {
+//     then 
+//   }
+// }
+
+getEventId();
 
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
