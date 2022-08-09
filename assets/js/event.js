@@ -94,7 +94,7 @@ function fetchEventInfo(eventId) {
     });
 }
 
-<<<<<<< HEAD
+
 // for (let index = 0; index < img.length; index++) {
 //   if (url === 16_9) {
 //     then 
@@ -102,7 +102,6 @@ function fetchEventInfo(eventId) {
 // }
 
 getEventId();
-=======
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
 
@@ -132,4 +131,4 @@ function calcRoute() {
     }
   }); 
 }
->>>>>>> b3f068d51783c04b24e579afe9e2945610e542ea
+
