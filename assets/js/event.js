@@ -100,7 +100,7 @@ function fetchEventInfo(eventId) {
 
 let eventImage = data.images;
 for (let index = 0; index < eventImage.length; index++) {
-  let wrongImage = url === 16_9
+  let wrongImage = ratio === 16_9
   if (eventImage = wrongImage) {
      
   }
