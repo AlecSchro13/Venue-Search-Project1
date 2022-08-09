@@ -16,7 +16,11 @@ Motivation: The motivation for this application is to help tourists and locals e
 
 
 
-//screenshots and screenrecordings go here
+
+
+https://user-images.githubusercontent.com/105956930/183723316-e655dc36-449d-47d0-a88b-254478dadbe4.mp4
+
+
 
 
 Team Members/Roles:
