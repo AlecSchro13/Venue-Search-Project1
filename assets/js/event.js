@@ -98,20 +98,15 @@ function fetchEventInfo(eventId) {
     });
 }
 
-
-for (let index = 0; index < img.length; index++) {
-  let eventImage = url === 16_9
-  if (eventImage) {
-    then 
+let eventImage = data.images;
+for (let index = 0; index < eventImage.length; index++) {
+  let wrongImage = url === 16_9
+  if (eventImage = wrongImage) {
+     
   }
 }
 
 
-// for (let index = 0; index < img.length; index++) {
-//   if (url === 16_9) {
-//     then
-//   }
-// }
 
 
 var directionsService = new google.maps.DirectionsService();
