@@ -19,10 +19,12 @@
   </div>
   <div class="container">
       <div class="navBar">
-        <form class="form1">
+        <form class="form1" autocomplete="off"> 
 
-          <input class="venueInput ui-widget input-group-lg" type="text" id="inputGroup-sizing-lg" />
-          <button class="submit-venue">Submit Venue</button>
+          <input class="venueInput autocomplete input-group-lg" type="text" id="inputGroup-sizing-lg" />
+          <ul id="results"></ul>
+          <button class="submit submit-venue">Submit Venue</button>
+
         </form>
 
         <form class="form2">
@@ -36,7 +38,6 @@
             <option value="Classical">Classical</option>
             <option value="Country">Country</option>
             <option value="Jazz">Jazz</option>
-            <option value="Other">Other</option>
           </select>
         </form>
       </div>
@@ -52,11 +53,9 @@
                 <h4 class="prevTitle">Previous Searches</h4>
               </div>
             </div>
-            <!-- </div> -->
             <div class="popV container">
               <h4 class="popTitle">Popular Venues</h4>
                 <div class="popBtns container">
-                  <!-- <div class=""> -->
                     <button class="popBtn mission" data-venue="Mission Ballroom">
                       Mission Ballroom
                     </button>

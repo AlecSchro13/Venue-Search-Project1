@@ -180,6 +180,7 @@ a:-webkit-any-link {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.fa-map-marker,
 #ticket-icon {
   margin-right: 20px;
 }
@@ -306,7 +307,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .bottomBox a {
-  margin-right: 70px;
+  margin-right: 50px;
 }
 
 .bottomBox img {
@@ -407,12 +408,25 @@ img {
 @media (min-width: 992px) {
 }
 
-/* @media (min-width: 992px) {
-  .container {
-    max-width: 1131px;
-  }
-} */
-
 .container {
   max-width: 100%;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+#results {
+  position: absolute;
+  list-style-type: none;
+  background-color: white;
+  border: 3px solid black;
+  z-index: 2;
+}
+
+#results li {
+  list-style-type: none;
+  text-align: left;
+  font-weight: 300;
 }
