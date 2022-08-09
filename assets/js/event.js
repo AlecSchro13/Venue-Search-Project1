@@ -61,6 +61,7 @@ function fetchEventInfo(eventId) {
       let eventDate = data.dates.start.localDate;
       document.getElementById("eventDate").textContent = eventDate;
       let startTime = data.dates.start.localTime;
+      document.getElementById("startTime").textContent = startTime
       document.getElementById("startTime").textContent = startTime;
       let city = data._embedded.venues[0].city.name;
       document.getElementById("city").textContent = city;
@@ -97,11 +98,21 @@ function fetchEventInfo(eventId) {
     });
 }
 
+
+for (let index = 0; index < img.length; index++) {
+  let eventImage = url === 16_9
+  if (eventImage) {
+    then 
+  }
+}
+
+
 // for (let index = 0; index < img.length; index++) {
 //   if (url === 16_9) {
 //     then
 //   }
 // }
+
 
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -130,3 +141,4 @@ function calcRoute() {
     }
   });
 }
+
