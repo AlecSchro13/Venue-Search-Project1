@@ -195,7 +195,7 @@ a:-webkit-any-link {
 .venueInput {
   line-height: 2.5rem;
   font-size: x-large;
-  width: 100%;
+  width: 50%;
 }
 
 .prevBtn {
@@ -323,7 +323,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .bottomBox a {
-  margin-right: 50px;
+  margin-right: 10px;
+  width: 200px;
 }
 
 .bottomBox img {
