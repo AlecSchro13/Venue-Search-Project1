@@ -1,15 +1,15 @@
-const link = document.querySelector(".linkSec")
+const link = document.querySelector(".linkSec");
 let usersLocation;
 let venueLocation;
 let userLat;
 let userLon;
 
 function convert(input) {
-  return moment(input, 'HH:mm:ss').format('h:mm A');
+  return moment(input, "HH:mm:ss").format("h:mm A");
 }
 
 function convert2(input) {
-  return moment().format('LL');  
+  return moment(input).format("LL");
 }
 
 function geoFindMe() {
@@ -55,7 +55,7 @@ function fetchEventInfo(eventId) {
       return response.json();
     })
     .then((data) => {
-      console.log(data)
+      console.log(data);
       let eventName = data.name;
       document.getElementById("eventName").textContent = eventName;
       let venueName = data._embedded.venues[0].name;
@@ -67,7 +67,7 @@ function fetchEventInfo(eventId) {
       let eventDate = data.dates.start.localDate;
       document.getElementById("eventDate").textContent = convert2(eventDate);
       let startTime = data.dates.start.localTime;
-      document.getElementById("startTime").textContent = convert(startTime)
+      document.getElementById("startTime").textContent = convert(startTime);
       let city = data._embedded.venues[0].city.name;
       document.getElementById("city").textContent = city;
       let state = data._embedded.venues[0].state.stateCode;
@@ -75,11 +75,10 @@ function fetchEventInfo(eventId) {
       let zipCode = data._embedded.venues[0].postalCode;
       document.getElementById("zipCode").textContent = zipCode;
       let imgUrl;
-    
-      
+
       for (let index = 0; index < data.images.length; index++) {
         let eventImage = data.images[index].height;
-        
+
         if (eventImage > "600") {
           imgUrl = data.images[index].url;
         }
@@ -87,30 +86,35 @@ function fetchEventInfo(eventId) {
           imgUrl = data.images[index].url;
           break;
         }
-        
       }
       const img = document.getElementById("imgsrc");
       let image = document.createElement("img");
 
       image.src = imgUrl;
       img.append(image);
-   
-      let postCode = data._embedded.venues[0].postalCode
-      let completeAddress = `${address}+${city}+${state}+${postCode}`
-      let buttonLink = document.createElement("button")
-      buttonLink.classList.add("buy-tickets")
-      let DirectionLink = document.createElement("a")
-      DirectionLink.textContent = "Click Here for Directions!"
-      DirectionLink.setAttribute("href", `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`,)
-      DirectionLink.setAttribute('target', '_blank')
-      buttonLink.append(DirectionLink)
+      let icon = document.createElement("i");
+      icon.classList.add("fa");
+      icon.classList.add("fa-map-marker");
+      icon.setAttribute("aria-hidden", "true");
+      let postCode = data._embedded.venues[0].postalCode;
+      let completeAddress = `${address}+${city}+${state}+${postCode}`;
+      let buttonLink = document.createElement("button");
+      buttonLink.classList.add("buy-tickets");
+      let DirectionLink = document.createElement("a");
+      DirectionLink.textContent = "Click Here for Directions!";
+      DirectionLink.setAttribute(
+        "href",
+        `https://www.google.com/maps/dir/${userLat},${userLon}/${completeAddress}`
+      );
+      DirectionLink.setAttribute("target", "_blank");
+      buttonLink.append(icon, DirectionLink);
       link.append(buttonLink);
 
-      const ticketUrl = document.getElementById("ticketUrl")
-      let url = data.url
-      
-      ticketUrl.setAttribute("href", `${url}`)
-      ticketUrl.setAttribute('target', '_blank')
+      const ticketUrl = document.getElementById("ticketUrl");
+      let url = data.url;
+
+      ticketUrl.setAttribute("href", `${url}`);
+      ticketUrl.setAttribute("target", "_blank");
 
       venueLocation = completeAddress;
       initMap(parseFloat(userLat), parseFloat(userLon));
@@ -148,4 +152,3 @@ function calcRoute() {
     }
   });
 }
-
