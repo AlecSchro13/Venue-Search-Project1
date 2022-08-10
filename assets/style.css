@@ -504,4 +504,6 @@ img {
   list-style-type: none;
   text-align: left;
   font-weight: 300;
+  padding: 10px;
+  padding-left: 0;
 }
