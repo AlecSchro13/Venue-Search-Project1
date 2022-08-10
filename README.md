@@ -29,6 +29,8 @@ https://user-images.githubusercontent.com/105956930/183723316-e655dc36-449d-47d0
 ![20220809_131705](https://user-images.githubusercontent.com/105956930/183767906-f08ade9d-a044-4948-b266-7dc620f622be.jpg)
 
 
+Deployed Links:
+https://github.com/AlecSchro13/Venue-Search-Project1
 
 
 
