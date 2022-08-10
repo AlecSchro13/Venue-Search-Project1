@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Venue Search</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/icon.ico" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./assets/style.css" />
-  <title>Venue Search</title>
-  <link rel="icon" type="image/x-icon" href="./assets/images/icon.ico">
-</head>
-
-<body>
-  <div class="site-title">
-    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> Colorado DreamWorld<i class="fa fa-music" aria-hidden="true"></i></h1>
-    <h2 class="sub-title">Venue and Events</h2>
-  </div>
-  <div class="container">
+  <body>
+    <div class="site-title">
+      <h1 class="title">
+        <i class="fa fa-music" aria-hidden="true"></i> Colorado DreamWorld<i
+          class="fa fa-music"
+          aria-hidden="true"
+        ></i>
+      </h1>
+      <h2 class="sub-title">Venue and Events</h2>
+    </div>
+    <div class="container">
       <div class="navBar">
-        <form class="form1" autocomplete="off"> 
-
-          <input class="venueInput autocomplete input-group-lg" type="text" id="inputGroup-sizing-lg" />
+        <form class="form1" autocomplete="off">
+          <input
+            class="venueInput autocomplete input-group-lg"
+            type="text"
+            id="inputGroup-sizing-lg"
+          />
           <ul id="results"></ul>
           <button class="submit submit-venue">Submit Venue</button>
-
         </form>
 
         <form class="form2">
           <button class="submit-genre">Submit Genre</button>
-          <select class="drop-menu" type="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" id="genreOptions">Genre
+          <select
+            class="drop-menu"
+            type="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="genreOptions"
+          >
+            Genre
             <option value="" disabled selected>Select Your Genre</option>
             <option value="Rock">Rock</option>
             <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
@@ -51,13 +70,20 @@
             </div>
             <div class="popV container">
               <h4 class="popTitle">Popular Venues</h4>
-                <div class="popBtns container">
+              <div class="popBtns container">
                 <div class="popBtns">
                   <div class="btnFlex1">
-                    <button class="popBtn mission" data-venue="Mission Ballroom">
+                    <button
+                      class="popBtn mission"
+                      data-venue="Mission Ballroom"
+                    >
                       Mission Ballroom
                     </button>
-                    <button class="popBtn redRocks" data-venue="Red Rocks Ampitheatre">Red Rocks Ampitheatre
+                    <button
+                      class="popBtn redRocks"
+                      data-venue="Red Rocks Ampitheatre"
+                    >
+                      Red Rocks Ampitheatre
                     </button>
                   </div>
                   <div class="btnFlex">
@@ -69,19 +95,18 @@
                     </button>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
-          <div class=" nearUser upcomingevents">
-              <h4 class="upcoming">Events Near Current User</h4>
-              <h2>(click on an event for more details!)</h2>
+          <div class="nearUser upcomingevents">
+            <h4 class="upcoming">Events Near Current User</h4>
+            <h2>(click on an event for more details!)</h2>
           </div>
-          
+        </div>
       </div>
     </div>
-  </div>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
-  <script src="./assets/js/script.js"></script>
-</body>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
